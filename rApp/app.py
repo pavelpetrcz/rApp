@@ -7,10 +7,10 @@ Created on Sat Oct 17 19:32:08 2020
 
 import actions
 
-
 if __name__ == "__main__":
     
-    #scrape firt page of offers
+    # scrape firt page of offers
     ba = actions.scrapeListOfOffers()
     
+    # scrape specific offer
     actions.scrapeOffer(ba)
