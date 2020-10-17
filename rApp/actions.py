@@ -47,6 +47,7 @@ def scrapeListOfOffers():
     
         # parse html with BS
         soupHtml = BeautifulSoup(html, "html.parser")
+        print(soupHtml)
         
         # count of item in scraped page
         itemsPerPage = len(soupHtml.findAll("a", {"class": "title"}))
@@ -58,12 +59,22 @@ def scrapeListOfOffers():
         else:
             scrapeAgain = False
     
-    #parsed URL of offer detail
-    parseUrlOfOfferDetail = soupHtml.findAll("a", {"class": "title"})[0]["href"]
+    #parsed URLs of all offer at page
+    a = 0
+    listOfUrls = []
+
+    while (a < itemsPerPage):
+        parseUrlOfOfferDetail = soupHtml.findAll("a", {"class": "title"})[a]["href"]
+        detailUrl = baseUrl + parseUrlOfOfferDetail
+        listOfUrls.append(detailUrl)
+        a = a + 1
     
     #concateta url for next scrape
-    detailUrl = baseUrl + parseUrlOfOfferDetail
-    return detailUrl
+    
+    return listOfUrls
+
+
+# method to scrape one offer page
 
 def scrapeOffer(detailUrl):
     # dict pro všechny informace z nabídky
