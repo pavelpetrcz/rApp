@@ -4,7 +4,7 @@ Created on Sat Oct 17 19:26:21 2020
 
 @author: pavel
 """
-
+from __future__ import print_function
 import requests
 import re
 import uuid
@@ -12,6 +12,9 @@ import time
 import string
 import gspread
 import pandas as pd
+import pickle
+import os.path
+import logging
 
 from datetime import datetime, timezone
 from dateutil.parser import parse
@@ -21,6 +24,14 @@ from selenium import webdriver
 from oauth2client.service_account import ServiceAccountCredentials
 from df2gspread import gspread2df as g2d
 from df2gspread import df2gspread as d2g
+from pprint import pprint
+from googleapiclient import discovery
+
+
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+
 
 def scrapeListOfOffers():
     startingPointUrl = "https://www.sreality.cz/hledani/prodej/byty"
@@ -47,7 +58,6 @@ def scrapeListOfOffers():
     
         # parse html with BS
         soupHtml = BeautifulSoup(html, "html.parser")
-        print(soupHtml)
         
         # count of item in scraped page
         itemsPerPage = len(soupHtml.findAll("a", {"class": "title"}))
@@ -85,7 +95,7 @@ def scrapeOffer(detailUrl):
     browser = webdriver.Chrome()
     browser.get(detailUrl)
     detailOfferHtml = browser.page_source
-    time.sleep(1)
+    time.sleep(2)
     browser.close()
     soupDetailOfferHtml = BeautifulSoup(detailOfferHtml, "html.parser")
     
@@ -97,32 +107,37 @@ def scrapeOffer(detailUrl):
     # set as internal id
     dict_offerDetailsAttr["internalId"] = g
     
-    # __Parsing offer name__
-    # "s_" means scraped value
-    s_offerName = soupDetailOfferHtml.find("span", {"itemprop": "name"}).find("span", {"class": "name ng-binding"}).get_text()
-    dict_offerDetailsAttr["offerName"] = s_offerName
+    # Parsing offer name
+    try:
+        s_offerName = soupDetailOfferHtml.find("span", {"itemprop": "name"}).find("span", {"class": "name ng-binding"}).get_text()
+        dict_offerDetailsAttr["offerName"] = s_offerName
+    except:
+        logging.warning(soupDetailOfferHtml)
+        pass
     
-    
-    # __Parsing address__
-    s_address = soupDetailOfferHtml.find("span", {"itemprop": "name"}).find("span", {"class": "location-text ng-binding"}).get_text()
-    dict_offerDetailsAttr["address"] = s_address
-    
-    
-    # __Parsing offered price__
+    try:
+        # __Parsing address__
+        s_address = soupDetailOfferHtml.find("span", {"itemprop": "name"}).find("span", {"class": "location-text ng-binding"}).get_text()
+        dict_offerDetailsAttr["address"] = s_address
+    except:
+        logging.warning(soupDetailOfferHtml)
+        pass
     
     # parse string with price
-    s_offeredPrice = soupDetailOfferHtml.find("span", {"ng-if": "contentData.price"}).find("span", {"class": "norm-price ng-binding"}).get_text()
+    try:
+        s_offeredPrice = soupDetailOfferHtml.find("span", {"ng-if": "contentData.price"}).find("span", {"class": "norm-price ng-binding"}).get_text()
+        #constant with specific info
+        check = "Info o ceně u RK"
     
-    #constant with specific info
-    check = "Info o ceně u RK"
-    
-    #if price is not number, save text, if it is real price parse just number
-    if (s_offeredPrice != check):
-        res = re.sub(r'\D', "", s_offeredPrice)
-        dict_offerDetailsAttr["offeredPrice"] = res
-    else:
-        dict_offerDetailsAttr["offeredPriceException"] = "infoRk"
-    
+        #if price is not number, save text, if it is real price parse just number
+        if (s_offeredPrice != check):
+            res = re.sub(r'\D', "", s_offeredPrice)
+            dict_offerDetailsAttr["offeredPrice"] = res
+        else:
+            dict_offerDetailsAttr["offeredPriceException"] = "infoRk"
+    except:
+        logging.warning(soupDetailOfferHtml)
+        pass
     
     # __Parsing description__
     
@@ -436,25 +451,75 @@ def scrapeOffer(detailUrl):
         pass
     
     
+    
+    # TODO: Change placeholder below to generate authentication credentials. See
+    # https://developers.google.com/sheets/quickstart/python#step_3_set_up_the_sample
+    #
+    # Authorize using one of the following scopes:
+    #     'https://www.googleapis.com/auth/drive'
+    #     'https://www.googleapis.com/auth/drive.file'
+    #     'https://www.googleapis.com/auth/spreadsheets'
+    creds = None
+    
+    # If modifying these scopes, delete the file token.pickle.
+    SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+    
+    if os.path.exists('token.pickle'):
+        with open('token.pickle', 'rb') as token:
+            creds = pickle.load(token)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                'C:\\Users\\pavel\\Disk Google\\finance\\nemovitosti\\nemovitostiSecretOauth.json', SCOPES)
+            creds = flow.run_local_server(port=0)
+        # Save the credentials for the next run
+        with open('token.pickle', 'wb') as token:
+            pickle.dump(creds, token)
+
+    
+    service = discovery.build('sheets', 'v4', credentials=creds)
+    
+    # The ID of the spreadsheet to update.
+    spreadsheet_id = '1YPWOsBVm2qGOWJx4dgniopZ_Ekm91h7hxy2-enof7N8'  
+    
+    # Values will be appended after the last row of the table.
+    range_ = 'A2:BL2'
+    
+    # How the input data should be interpreted.
+    value_input_option = 'RAW'
+    
+    # How the input data should be inserted.
+    insert_data_option = 'INSERT_ROWS'
+    
+    value_range_body = {"values": [["a", "b"]], "range": "A1:B1"}
+    
+    request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_, valueInputOption=value_input_option, insertDataOption=insert_data_option, body=value_range_body)
+    response = request.execute()
+    
+    # TODO: Change code below to process the `response` dict:
+    pprint(response)
+    
     # ## Save to spreadsheet
-    udf = pd.DataFrame.from_dict(dict_offerDetailsAttr, orient='index')
-    udf_transpose = udf.transpose()
+    # udf = pd.DataFrame.from_dict(dict_offerDetailsAttr, orient='index')
+    # udf_transpose = udf.transpose()
     
-    # accessing Google Spreadsheet
-    scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('C:\\Users\\pavel\\Disk Google\\finance\\nemovitosti\\nemovitostiSecret.json', scope)
-    client = gspread.authorize(creds)
+    # # accessing Google Spreadsheet
+    # scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+    # creds = ServiceAccountCredentials.from_json_keyfile_name('C:\\Users\\pavel\\Disk Google\\finance\\nemovitosti\\nemovitostiSecret.json', scope)
+    # client = gspread.authorize(creds)
     
+    # # opening specific spreadsheet
+    # sheet = client.open('srealityOffers').sheet1
     
-    # opening specif spreadsheet
-    sheet = client.open('srealityOffers').sheet1
+    # # sheet name
+    # wks_name = 'data'
     
-    # setting spreadsheet ID
-    spreadsheet_key = '1YPWOsBVm2qGOWJx4dgniopZ_Ekm91h7hxy2-enof7N8'
+    # # prepare cell where to start saving
+    # st = "A" + str(startline)
     
-    # sheet name
-    wks_name = 'data'
-    
-    # upload final dataframe with new column to G-sheet
-    d2g.upload(udf_transpose, spreadsheet_key, wks_name, credentials=creds, row_names=True)
-    
+    # # upload final dataframe with new column to G-sheet
+    # d2g.upload(udf_transpose, spreadsheet_key, wks_name, credentials=creds, row_names=True, start_cell=st)
+    print("offerSaved")

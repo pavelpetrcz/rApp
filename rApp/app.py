@@ -9,6 +9,8 @@ import actions
 
 if __name__ == "__main__":
     
+    #figure out where to start saving
+    
     # scrape firt page of offers
     ba = actions.scrapeListOfOffers()
     
