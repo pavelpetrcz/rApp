@@ -8,13 +8,11 @@ Created on Sat Oct 17 19:32:08 2020
 import actions
 
 if __name__ == "__main__":
-    
-    #figure out where to start saving
-    
     # scrape firt page of offers
-    ba = actions.scrapeListOfOffers()
-    
-    for item in ba:
-    
+    listOfOffers = actions.scrapeListOfOffers()
+
+    #for each url of offer try to scrape html and then extract data
+    for item in listOfOffers:
         # scrape specific offer
-        actions.scrapeOffer(item)
+        scraped_html = actions.scrapeOfferHtml(item)
+        actions.extractData(scraped_html)

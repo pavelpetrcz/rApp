@@ -80,30 +80,40 @@ def scrapeListOfOffers():
         a = a + 1
     
     #concateta url for next scrape
-    
     return listOfUrls
 
+def scrapeOfferHtml(url):
+    scrapeAgain = True
+    scrapeSleep = 2
+
+    while (scrapeAgain):
+        # open page with offer
+        browser = webdriver.Chrome()
+        browser.get(url)
+        detailOfferHtml = browser.page_source
+        time.sleep(2)
+        browser.close()
+        sHtml = BeautifulSoup(detailOfferHtml, "html.parser")
+        print(sHtml.find("div", {"ng-bind-html": "contentData.description"}))
+        # if scraping was not successful do it again slower
+        if (ta):
+            scrapeAgain = False
+        else:
+            scrapeAgain = True
+            scrapeSleep += 1
+
+    return sHtml
 
 # method to scrape one offer page
 
-def scrapeOffer(detailUrl):
+def extractData(html):
     # dict pro všechny informace z nabídky
     list_offerDetailsAttr = ["internalId", "idOrder", "id", "offerName", "address", "offeredPrice", "offeredPriceException", "priceNote", "desc", "utilitiesCosts", "yearOfReconstruction", "offerUpdatedDate", "floor", "ownership", "transferToPersonalOwnership", "location", "locationDesc", "usableArea", "balconySqMeter", "terraceSqMeter", "cellarSqMeter", "yearOfApproval", "water", "gas", "heating", "waste", "connectivity", "buildingCondition", "building", "electricity", "transport", "roads", "energyPerformanceOfBuilding", "barrieFree", "terrace", "garage", "cellar", "equipped", "parking", "loggia", "lift", "sweetshopDistance", "cinemaDistance", "playgroundDistance", "culturalHeritageDistance", "naturalAttractionDistance", "convenienceStoreDistance", "pubDistance", "theaterDistance", "veterinaryDistance", "publicTransportDistance", "sportsGroundDistance", "tramDistance", "trainDistance", "restaurantDistance", "metroDistance", "storeDistance", "schoolDistance", "doctorDistance", "atmDistance", "preSchoolDistance", "schoolDistance", "pharmacyDistance", "trainDistance", "postOfficeDistance"]
     dict_offerDetailsAttr = dict.fromkeys(list_offerDetailsAttr)
 
-    # open page with offer
-    browser = webdriver.Chrome()
-    browser.get(detailUrl)
-    detailOfferHtml = browser.page_source
-    time.sleep(2)
-    browser.close()
-    soupDetailOfferHtml = BeautifulSoup(detailOfferHtml, "html.parser")
-    
-    
     #generate unique random id in hexadecimal
     g = uuid.uuid4().hex
-    
-    
+
     # set as internal id
     dict_offerDetailsAttr["internalId"] = g
     
@@ -112,7 +122,7 @@ def scrapeOffer(detailUrl):
         s_offerName = soupDetailOfferHtml.find("span", {"itemprop": "name"}).find("span", {"class": "name ng-binding"}).get_text()
         dict_offerDetailsAttr["offerName"] = s_offerName
     except:
-        logging.warning(soupDetailOfferHtml)
+        logging.warning("s_offerName was not scraped.")
         pass
     
     try:
@@ -139,12 +149,10 @@ def scrapeOffer(detailUrl):
         logging.warning(soupDetailOfferHtml)
         pass
     
-    # __Parsing description__
-    
+    # Parsing description
     s_desc = soupDetailOfferHtml.find("div", {"itemprop": "description"}).get_text()
     dict_offerDetailsAttr["desc"] = s_desc
-    
-    
+
     # __Parsing additional data from table below description__
     #find all labels
     li_tags = soupDetailOfferHtml.findAll("li")
@@ -450,15 +458,9 @@ def scrapeOffer(detailUrl):
     except:
         pass
     
+    list_offerDetailValues = dict_offerDetailsAttr.values()
     
-    
-    # TODO: Change placeholder below to generate authentication credentials. See
-    # https://developers.google.com/sheets/quickstart/python#step_3_set_up_the_sample
-    #
-    # Authorize using one of the following scopes:
-    #     'https://www.googleapis.com/auth/drive'
-    #     'https://www.googleapis.com/auth/drive.file'
-    #     'https://www.googleapis.com/auth/spreadsheets'
+    #oAuth 2.0 Google
     creds = None
     
     # If modifying these scopes, delete the file token.pickle.
@@ -474,7 +476,7 @@ def scrapeOffer(detailUrl):
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
                 'C:\\Users\\pavel\\Disk Google\\finance\\nemovitosti\\nemovitostiSecretOauth.json', SCOPES)
-            creds = flow.run_local_server(port=0)
+            creds = flow.run_local_server(port=8000)
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
@@ -486,7 +488,7 @@ def scrapeOffer(detailUrl):
     spreadsheet_id = '1YPWOsBVm2qGOWJx4dgniopZ_Ekm91h7hxy2-enof7N8'  
     
     # Values will be appended after the last row of the table.
-    range_ = 'A2:BL2'
+    range_ = 'A1:BL2'
     
     # How the input data should be interpreted.
     value_input_option = 'RAW'
@@ -494,7 +496,7 @@ def scrapeOffer(detailUrl):
     # How the input data should be inserted.
     insert_data_option = 'INSERT_ROWS'
     
-    value_range_body = {"values": [["a", "b"]], "range": "A1:B1"}
+    value_range_body = {"values": [["a", "b"]], "range": "A1:BL2"}
     
     request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_, valueInputOption=value_input_option, insertDataOption=insert_data_option, body=value_range_body)
     response = request.execute()
@@ -502,24 +504,4 @@ def scrapeOffer(detailUrl):
     # TODO: Change code below to process the `response` dict:
     pprint(response)
     
-    # ## Save to spreadsheet
-    # udf = pd.DataFrame.from_dict(dict_offerDetailsAttr, orient='index')
-    # udf_transpose = udf.transpose()
-    
-    # # accessing Google Spreadsheet
-    # scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-    # creds = ServiceAccountCredentials.from_json_keyfile_name('C:\\Users\\pavel\\Disk Google\\finance\\nemovitosti\\nemovitostiSecret.json', scope)
-    # client = gspread.authorize(creds)
-    
-    # # opening specific spreadsheet
-    # sheet = client.open('srealityOffers').sheet1
-    
-    # # sheet name
-    # wks_name = 'data'
-    
-    # # prepare cell where to start saving
-    # st = "A" + str(startline)
-    
-    # # upload final dataframe with new column to G-sheet
-    # d2g.upload(udf_transpose, spreadsheet_key, wks_name, credentials=creds, row_names=True, start_cell=st)
     print("offerSaved")
