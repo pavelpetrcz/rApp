@@ -5,32 +5,23 @@ Created on Sat Oct 17 19:26:21 2020
 @author: pavel
 """
 from __future__ import print_function
-import requests
-import re
-import uuid
-import time
-import string
-import gspread
-import pandas as pd
-import pickle
-import os.path
+
 import logging
-
-from datetime import datetime, timezone
-from dateutil.parser import parse
-from bs4 import BeautifulSoup
-from time import sleep
-from selenium import webdriver
-from oauth2client.service_account import ServiceAccountCredentials
-from df2gspread import gspread2df as g2d
-from df2gspread import df2gspread as d2g
+import os.path
+import pickle
+import random
+import re
+import time
+import uuid
+from datetime import datetime
 from pprint import pprint
-from googleapiclient import discovery
 
-
-from googleapiclient.discovery import build
-from google_auth_oauthlib.flow import InstalledAppFlow
+from bs4 import BeautifulSoup
+from dateutil.parser import parse
 from google.auth.transport.requests import Request
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient import discovery
+from selenium import webdriver
 
 
 def scrapeListOfOffers():
@@ -48,11 +39,11 @@ def scrapeListOfOffers():
     
         # open URL
         browser.get(startingPointUrl)
-    
+        time.sleep(scrapeSleep)
+
         # download page in HTML
         html = browser.page_source
-        time.sleep(scrapeSleep)
-    
+
         # close chrome
         browser.close()
     
@@ -82,6 +73,25 @@ def scrapeListOfOffers():
     #concateta url for next scrape
     return listOfUrls
 
+def getHeader():
+    user_agent_list = [
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0',
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
+        'Mozilla/5.0 CK={} (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko',
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36',
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'
+    ]
+    url = 'https://httpbin.org/headers'
+    for i in range(1, 8):
+        # Pick a random user agent
+        user_agent = random.choice(user_agent_list)
+        # Set the headers
+        headers = {'User-Agent': user_agent}
+        return headers
+
 def scrapeOfferHtml(url):
     scrapeAgain = True
     scrapeSleep = 2
@@ -89,14 +99,27 @@ def scrapeOfferHtml(url):
     while (scrapeAgain):
         # open page with offer
         browser = webdriver.Chrome()
+        header = getHeader()
         browser.get(url)
+        time.sleep(scrapeSleep)
+
+        #get html
         detailOfferHtml = browser.page_source
-        time.sleep(2)
+
+        #close browser
         browser.close()
+
+        #parse html
         sHtml = BeautifulSoup(detailOfferHtml, "html.parser")
-        print(sHtml.find("div", {"ng-bind-html": "contentData.description"}))
-        # if scraping was not successful do it again slower
-        if (ta):
+
+        #check data
+        if sHtml.findAll("div", {"ng-bind-html": "contentData.description"}) and sHtml.findAll("span", {"itemprop": "name"}).find("span", {"class": "name ng-binding"}):
+            bat = True
+        else:
+            bat = False
+
+        #decide if scrape again
+        if (bat):
             scrapeAgain = False
         else:
             scrapeAgain = True
