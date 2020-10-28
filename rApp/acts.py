@@ -6,16 +6,17 @@ Created on Sat Oct 17 19:26:21 2020
 """
 from __future__ import print_function
 
+import json
 import logging
 import os.path
 import pickle
-import random
 import re
 import time
 import uuid
 from datetime import datetime
 from pprint import pprint
 
+import requests
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
 from google.auth.transport.requests import Request
@@ -24,7 +25,16 @@ from googleapiclient import discovery
 from selenium import webdriver
 
 
-def scrapeListOfOffers():
+def get_offer_json(id):
+    url = "https://www.sreality.cz/api/cs/v2/estates/"
+
+    final_url = url + id
+    time.sleep(1)
+    response = requests.get(final_url)
+    result = response.json()
+    return result
+
+def scrape_list_of_offers():
     startingPointUrl = "https://www.sreality.cz/hledani/prodej/byty"
 
     # base Url
@@ -32,11 +42,13 @@ def scrapeListOfOffers():
 
     scrapeAgain = True
     scrapeSleep = 2
+    itemsPerPage = 0
+    soupHtml = ""
 
     while (scrapeAgain):
         # open chrome
         browser = webdriver.Chrome()
-    
+
         # open URL
         browser.get(startingPointUrl)
         time.sleep(scrapeSleep)
@@ -46,21 +58,21 @@ def scrapeListOfOffers():
 
         # close chrome
         browser.close()
-    
+
         # parse html with BS
         soupHtml = BeautifulSoup(html, "html.parser")
-        
+
         # count of item in scraped page
         itemsPerPage = len(soupHtml.findAll("a", {"class": "title"}))
-        
-        #if scraping was not successful do it again slower
+
+        # if scraping was not successful do it again slower
         if (itemsPerPage == 0):
             scrapeAgain = True
             scrapeSleep += 1
         else:
             scrapeAgain = False
-    
-    #parsed URLs of all offer at page
+
+    # parsed URLs of all offer at page
     a = 0
     listOfUrls = []
 
@@ -69,158 +81,113 @@ def scrapeListOfOffers():
         detailUrl = baseUrl + parseUrlOfOfferDetail
         listOfUrls.append(detailUrl)
         a = a + 1
-    
-    #concateta url for next scrape
+
+    # concateta url for next scrape
     return listOfUrls
 
-def getHeader():
-    user_agent_list = [
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0',
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
-        'Mozilla/5.0 CK={} (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'
-    ]
-    url = 'https://httpbin.org/headers'
-    for i in range(1, 8):
-        # Pick a random user agent
-        user_agent = random.choice(user_agent_list)
-        # Set the headers
-        headers = {'User-Agent': user_agent}
-        return headers
-
-def scrapeOfferHtml(url):
-    scrapeAgain = True
-    scrapeSleep = 2
-
-    while (scrapeAgain):
-        # open page with offer
-        browser = webdriver.Chrome()
-        header = getHeader()
-        browser.get(url)
-        time.sleep(scrapeSleep)
-
-        #get html
-        detailOfferHtml = browser.page_source
-
-        #close browser
-        browser.close()
-
-        #parse html
-        sHtml = BeautifulSoup(detailOfferHtml, "html.parser")
-
-        #check data
-        if sHtml.findAll("div", {"ng-bind-html": "contentData.description"}) and sHtml.findAll("span", {"itemprop": "name"}).find("span", {"class": "name ng-binding"}):
-            bat = True
-        else:
-            bat = False
-
-        #decide if scrape again
-        if (bat):
-            scrapeAgain = False
-        else:
-            scrapeAgain = True
-            scrapeSleep += 1
-
-    return sHtml
-
-# method to scrape one offer page
-
-def extractData(html):
-    # dict pro všechny informace z nabídky
-    list_offerDetailsAttr = ["internalId", "idOrder", "id", "offerName", "address", "offeredPrice", "offeredPriceException", "priceNote", "desc", "utilitiesCosts", "yearOfReconstruction", "offerUpdatedDate", "floor", "ownership", "transferToPersonalOwnership", "location", "locationDesc", "usableArea", "balconySqMeter", "terraceSqMeter", "cellarSqMeter", "yearOfApproval", "water", "gas", "heating", "waste", "connectivity", "buildingCondition", "building", "electricity", "transport", "roads", "energyPerformanceOfBuilding", "barrieFree", "terrace", "garage", "cellar", "equipped", "parking", "loggia", "lift", "sweetshopDistance", "cinemaDistance", "playgroundDistance", "culturalHeritageDistance", "naturalAttractionDistance", "convenienceStoreDistance", "pubDistance", "theaterDistance", "veterinaryDistance", "publicTransportDistance", "sportsGroundDistance", "tramDistance", "trainDistance", "restaurantDistance", "metroDistance", "storeDistance", "schoolDistance", "doctorDistance", "atmDistance", "preSchoolDistance", "schoolDistance", "pharmacyDistance", "trainDistance", "postOfficeDistance"]
+def extractdata(data):
+    # # dict pro všechny informace z nabídky
+    list_offerDetailsAttr = ["internalId", "idOrder", "id", "offerName", "address", "offeredPrice",
+                             "offeredPriceException", "priceNote", "desc", "utilitiesCosts", "yearOfReconstruction",
+                             "offerUpdatedDate", "floor", "ownership", "transferToPersonalOwnership", "location",
+                             "locationDesc", "usableArea", "balconySqMeter", "terraceSqMeter", "cellarSqMeter",
+                             "yearOfApproval", "water", "gas", "heating", "waste", "connectivity", "buildingCondition",
+                             "building", "electricity", "transport", "roads", "energyPerformanceOfBuilding",
+                             "barrieFree", "terrace", "garage", "cellar", "equipped", "parking", "loggia", "lift",
+                             "sweetshopDistance", "cinemaDistance", "playgroundDistance", "culturalHeritageDistance",
+                             "naturalAttractionDistance", "convenienceStoreDistance", "pubDistance", "theaterDistance",
+                             "veterinaryDistance", "publicTransportDistance", "sportsGroundDistance", "tramDistance",
+                             "trainDistance", "restaurantDistance", "metroDistance", "storeDistance", "schoolDistance",
+                             "doctorDistance", "atmDistance", "preSchoolDistance", "schoolDistance", "pharmacyDistance",
+                             "trainDistance", "postOfficeDistance"]
     dict_offerDetailsAttr = dict.fromkeys(list_offerDetailsAttr)
 
-    #generate unique random id in hexadecimal
+    # generate unique random id in hexadecimal
     g = uuid.uuid4().hex
 
-    # set as internal id
+    # # set as internal id
     dict_offerDetailsAttr["internalId"] = g
-    
+
     # Parsing offer name
     try:
-        s_offerName = soupDetailOfferHtml.find("span", {"itemprop": "name"}).find("span", {"class": "name ng-binding"}).get_text()
+        s_offerName = html.find("span", {"itemprop": "name"}).find("span", {"class": "name ng-binding"}).get_text()
         dict_offerDetailsAttr["offerName"] = s_offerName
     except:
         logging.warning("s_offerName was not scraped.")
         pass
-    
+
     try:
         # __Parsing address__
-        s_address = soupDetailOfferHtml.find("span", {"itemprop": "name"}).find("span", {"class": "location-text ng-binding"}).get_text()
+        s_address = html.find("span", {"itemprop": "name"}).find("span",
+                                                                 {"class": "location-text ng-binding"}).get_text()
         dict_offerDetailsAttr["address"] = s_address
     except:
-        logging.warning(soupDetailOfferHtml)
+        logging.warning(html)
         pass
-    
+
     # parse string with price
     try:
-        s_offeredPrice = soupDetailOfferHtml.find("span", {"ng-if": "contentData.price"}).find("span", {"class": "norm-price ng-binding"}).get_text()
-        #constant with specific info
+        s_offeredPrice = html.find("span", {"ng-if": "contentData.price"}).find("span", {
+            "class": "norm-price ng-binding"}).get_text()
+        # constant with specific info
         check = "Info o ceně u RK"
-    
-        #if price is not number, save text, if it is real price parse just number
+
+        # if price is not number, save text, if it is real price parse just number
         if (s_offeredPrice != check):
             res = re.sub(r'\D', "", s_offeredPrice)
             dict_offerDetailsAttr["offeredPrice"] = res
         else:
             dict_offerDetailsAttr["offeredPriceException"] = "infoRk"
     except:
-        logging.warning(soupDetailOfferHtml)
+        logging.warning(html)
         pass
-    
+
     # Parsing description
-    s_desc = soupDetailOfferHtml.find("div", {"itemprop": "description"}).get_text()
+    s_desc = html.find("div", {"itemprop": "description"}).get_text()
     dict_offerDetailsAttr["desc"] = s_desc
 
     # __Parsing additional data from table below description__
-    #find all labels
-    li_tags = soupDetailOfferHtml.findAll("li")
-    
+    # find all labels
+    li_tags = html.findAll("li")
+
     # all of lables strip from whitespaces and remove "None" and place to list
-    list_table_of_att = [] 
+    list_table_of_att = []
     for item in li_tags:
         a = item.get_text().strip().replace("\n", "")
         list_table_of_att.append(a)
     list_table_of_att = list(filter(None, list_table_of_att))
-    
+
     dict_table_of_att = {}
     rounds = len(list_table_of_att)
-    
-    #for earch item in dict go throught and set key and value
+
+    # for earch item in dict go throught and set key and value
     for item in range(rounds):
-        #split value by ":"
+        # split value by ":"
         list_label_value = list_table_of_att[item].split(":")
-        #count lenght of list
+        # count lenght of list
         length = len(list_label_value)
         # if list contains 2 items (key:value) then set ..
         if (length == 2):
-            #if it is value about distance then separate number and set in new dict
+            # if it is value about distance then separate number and set in new dict
             if (re.search('\(\d{1,5}', list_label_value[1])):
                 r = re.findall('\d{1,5}', list_label_value[1])
                 xset = r[0]
-            #if after split contains list only one item ten set it as key and add "nic" as value
+            # if after split contains list only one item ten set it as key and add "nic" as value
             else:
                 xset = list_label_value[1]
-            #set new key:value in new list
+            # set new key:value in new list
             dict_table_of_att[list_label_value[0]] = xset
         else:
             dict_table_of_att[list_label_value[0]] = "nic"
-        
-    dict_table_of_att
-    
+
     # list of span tags with specific class attr
-    bool_values = soupDetailOfferHtml.findAll("span", {"class": "icof"})
-    #regexes for testing
+    bool_values = html.findAll("span", {"class": "icof"})
+    # regexes for testing
     reg_ok = "boolean-true"
     reg_nok = "boolean-false"
-    
-    
+
     list_bool_values = []
-    
+
     # for each line of html with span tag test if contains regex and according to value append True or False to list above
     for item in bool_values:
         if (re.findall(reg_ok, str(item))):
@@ -229,34 +196,28 @@ def extractData(html):
             list_bool_values.append(False)
         else:
             continue
-    
+
     order = 0
     # for each item in dict where is no values we set bool value according to scrape data above
     for item in dict_table_of_att:
         if (dict_table_of_att[item]) == "":
             dict_table_of_att[item] = list_bool_values[order]
             order += order
-    
-    
-    dict_table_of_att
-    
-    
-    # __Parsing last date and time updated__
-    
-    #set now
+
+    # Parsing last date and time updated
+    # set now
     time_now = datetime.fromtimestamp(time.time())
-    
+
     # if offer was updated today, they state "today" instead of date therefore ...
     if dict_table_of_att['Aktualizace'] == "Dnes":
         dict_offerDetailsAttr['offerUpdatedDate'] = time_now.strftime("%d/%m/%Y")
-    
-        #if update is date, we use that formatted date
-    else: 
+
+        # if update is date, we use that formatted date
+    else:
         dtime = parse(str(dict_table_of_att['Aktualizace']))
         dict_offerDetailsAttr['offerUpdatedDate'] = dtime.strftime("%d/%m/%Y")
-    
-    
-    # __Parsing of usable area, terrace and cellar__
+
+    # Parsing of usable area, terrace and cellar
     try:
         list_a = dict_table_of_att['Užitná plocha'].split("m")
         dict_offerDetailsAttr['usableArea'] = list_a[0]
@@ -272,8 +233,8 @@ def extractData(html):
         dict_offerDetailsAttr['cellarSqMeter'] = list_b[0]
     except:
         pass
-    
-    # __Parsing of priceNote, location, floor, buildingCondition, building, lift, ownership, ID, water, heating, waste, gas, electricity__
+
+    # Parsing of priceNote, location, floor, buildingCondition, building, lift, ownership, ID, water, heating, waste, gas, electricity
     try:
         dict_offerDetailsAttr['priceNote'] = dict_table_of_att['Poznámka k ceně']
     except:
@@ -386,8 +347,8 @@ def extractData(html):
         dict_offerDetailsAttr['yearOfApproval'] = dict_table_of_att['Rok kolaudace']
     except:
         pass
-    
-    # __Parsing of distances__
+
+    # Parsing of distances
     try:
         dict_offerDetailsAttr['playgroundDistance'] = dict_table_of_att['Hřiště']
     except:
@@ -480,15 +441,15 @@ def extractData(html):
         dict_offerDetailsAttr['naturalAttractionDistance'] = dict_table_of_att['Přírodní zajímavost']
     except:
         pass
-    
+
     list_offerDetailValues = dict_offerDetailsAttr.values()
-    
-    #oAuth 2.0 Google
+
+    # oAuth 2.0 Google
     creds = None
-    
+
     # If modifying these scopes, delete the file token.pickle.
     SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-    
+
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
@@ -504,27 +465,26 @@ def extractData(html):
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
 
-    
     service = discovery.build('sheets', 'v4', credentials=creds)
-    
+
     # The ID of the spreadsheet to update.
-    spreadsheet_id = '1YPWOsBVm2qGOWJx4dgniopZ_Ekm91h7hxy2-enof7N8'  
-    
+    spreadsheet_id = '1YPWOsBVm2qGOWJx4dgniopZ_Ekm91h7hxy2-enof7N8'
+
     # Values will be appended after the last row of the table.
     range_ = 'A1:BL2'
-    
+
     # How the input data should be interpreted.
     value_input_option = 'RAW'
-    
+
     # How the input data should be inserted.
     insert_data_option = 'INSERT_ROWS'
-    
+
     value_range_body = {"values": [["a", "b"]], "range": "A1:BL2"}
-    
-    request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_, valueInputOption=value_input_option, insertDataOption=insert_data_option, body=value_range_body)
+
+    request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_,
+                                                     valueInputOption=value_input_option,
+                                                     insertDataOption=insert_data_option, body=value_range_body)
     response = request.execute()
-    
-    # TODO: Change code below to process the `response` dict:
+
     pprint(response)
-    
     print("offerSaved")

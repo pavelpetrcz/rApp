@@ -5,14 +5,19 @@ Created on Sat Oct 17 19:32:08 2020
 @author: pavel
 """
 
-import actions
+import acts
 
 if __name__ == "__main__":
-    # scrape firt page of offers
-    listOfOffers = actions.scrapeListOfOffers()
+    # scrape first page of offers
+    listOfOffers = acts.scrape_list_of_offers()
+    print(listOfOffers)
+    list_d = []
 
-    #for each url of offer try to scrape html and then extract data
     for item in listOfOffers:
-        # scrape specific offer
-        scraped_html = actions.scrapeOfferHtml(item)
-        actions.extractData(scraped_html)
+        splitedItem = item.split("/")
+        data = acts.get_offer_json(splitedItem[-1])
+        list_d.append(data)
+
+    for i in list_d:
+        acts.extractData(i)
+        print(i["meta_description"])
