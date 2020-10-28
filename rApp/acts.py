@@ -34,6 +34,7 @@ def get_offer_json(id):
     result = response.json()
     return result
 
+
 def scrape_list_of_offers():
     startingPointUrl = "https://www.sreality.cz/hledani/prodej/byty"
 
@@ -82,13 +83,14 @@ def scrape_list_of_offers():
         listOfUrls.append(detailUrl)
         a = a + 1
 
-    # concateta url for next scrape
+    # concatate url for next scrape
     return listOfUrls
 
-def extractdata(data):
+
+def extractData(data):
     # # dict pro všechny informace z nabídky
-    list_offerDetailsAttr = ["internalId", "idOrder", "id", "offerName", "address", "offeredPrice",
-                             "offeredPriceException", "priceNote", "desc", "utilitiesCosts", "yearOfReconstruction",
+    list_offerDetailsAttr = ["internalId", "idOrder", "id", "offerName", "address", "offeredPrice", "priceNote",
+                             "desc", "utilitiesCosts", "yearOfReconstruction",
                              "offerUpdatedDate", "floor", "ownership", "transferToPersonalOwnership", "location",
                              "locationDesc", "usableArea", "balconySqMeter", "terraceSqMeter", "cellarSqMeter",
                              "yearOfApproval", "water", "gas", "heating", "waste", "connectivity", "buildingCondition",
@@ -108,383 +110,324 @@ def extractdata(data):
     # # set as internal id
     dict_offerDetailsAttr["internalId"] = g
 
-    # Parsing offer name
+    # Name
     try:
-        s_offerName = html.find("span", {"itemprop": "name"}).find("span", {"class": "name ng-binding"}).get_text()
+        s_offerName = data["name"]["value"]
         dict_offerDetailsAttr["offerName"] = s_offerName
     except:
-        logging.warning("s_offerName was not scraped.")
+        logging.warning("s_offerName was not grabbed.", exc_info=True)
         pass
 
+    # Address
     try:
-        # __Parsing address__
-        s_address = html.find("span", {"itemprop": "name"}).find("span",
-                                                                 {"class": "location-text ng-binding"}).get_text()
+        s_address = data["locality"]["value"]
         dict_offerDetailsAttr["address"] = s_address
     except:
-        logging.warning(html)
+        logging.warning("s_address was not grabbed.", exc_info=True)
         pass
 
-    # parse string with price
+    # price
     try:
-        s_offeredPrice = html.find("span", {"ng-if": "contentData.price"}).find("span", {
-            "class": "norm-price ng-binding"}).get_text()
-        # constant with specific info
-        check = "Info o ceně u RK"
-
-        # if price is not number, save text, if it is real price parse just number
-        if (s_offeredPrice != check):
-            res = re.sub(r'\D', "", s_offeredPrice)
-            dict_offerDetailsAttr["offeredPrice"] = res
-        else:
-            dict_offerDetailsAttr["offeredPriceException"] = "infoRk"
+        s_offeredPrice = data["price_czk"]["value_raw"]
     except:
-        logging.warning(html)
+        s_offeredPrice = 000000000
+        logging.warning("s_offeredPrice was not grabbed.", exc_info=True)
         pass
+    dict_offerDetailsAttr["offeredPrice"] = s_offeredPrice
 
-    # Parsing description
-    s_desc = html.find("div", {"itemprop": "description"}).get_text()
+    # Description
+    s_desc = data["text"]["value"]
     dict_offerDetailsAttr["desc"] = s_desc
 
-    # __Parsing additional data from table below description__
-    # find all labels
-    li_tags = html.findAll("li")
-
-    # all of lables strip from whitespaces and remove "None" and place to list
-    list_table_of_att = []
-    for item in li_tags:
-        a = item.get_text().strip().replace("\n", "")
-        list_table_of_att.append(a)
-    list_table_of_att = list(filter(None, list_table_of_att))
-
-    dict_table_of_att = {}
-    rounds = len(list_table_of_att)
-
-    # for earch item in dict go throught and set key and value
-    for item in range(rounds):
-        # split value by ":"
-        list_label_value = list_table_of_att[item].split(":")
-        # count lenght of list
-        length = len(list_label_value)
-        # if list contains 2 items (key:value) then set ..
-        if (length == 2):
-            # if it is value about distance then separate number and set in new dict
-            if (re.search('\(\d{1,5}', list_label_value[1])):
-                r = re.findall('\d{1,5}', list_label_value[1])
-                xset = r[0]
-            # if after split contains list only one item ten set it as key and add "nic" as value
-            else:
-                xset = list_label_value[1]
-            # set new key:value in new list
-            dict_table_of_att[list_label_value[0]] = xset
-        else:
-            dict_table_of_att[list_label_value[0]] = "nic"
-
-    # list of span tags with specific class attr
-    bool_values = html.findAll("span", {"class": "icof"})
-    # regexes for testing
-    reg_ok = "boolean-true"
-    reg_nok = "boolean-false"
-
-    list_bool_values = []
-
-    # for each line of html with span tag test if contains regex and according to value append True or False to list above
-    for item in bool_values:
-        if (re.findall(reg_ok, str(item))):
-            list_bool_values.append(True)
-        elif (re.findall(reg_nok, str(item))):
-            list_bool_values.append(False)
-        else:
-            continue
-
-    order = 0
-    # for each item in dict where is no values we set bool value according to scrape data above
-    for item in dict_table_of_att:
-        if (dict_table_of_att[item]) == "":
-            dict_table_of_att[item] = list_bool_values[order]
-            order += order
+    # Parsing additional data from table below description
+    # =====================================================
+    # set now
+    #time_now = datetime.fromtimestamp(time.time())
 
     # Parsing last date and time updated
-    # set now
-    time_now = datetime.fromtimestamp(time.time())
+    d = data["items"]
+    for i in d:
+        dict_detailsTableOfOffer[d["name"]] = d["value"]
 
-    # if offer was updated today, they state "today" instead of date therefore ...
-    if dict_table_of_att['Aktualizace'] == "Dnes":
-        dict_offerDetailsAttr['offerUpdatedDate'] = time_now.strftime("%d/%m/%Y")
+    print(dict_offerDetailsAttr)
 
-        # if update is date, we use that formatted date
-    else:
-        dtime = parse(str(dict_table_of_att['Aktualizace']))
-        dict_offerDetailsAttr['offerUpdatedDate'] = dtime.strftime("%d/%m/%Y")
-
-    # Parsing of usable area, terrace and cellar
-    try:
-        list_a = dict_table_of_att['Užitná plocha'].split("m")
-        dict_offerDetailsAttr['usableArea'] = list_a[0]
-    except:
-        pass
-    try:
-        list_b = dict_table_of_att['Terasa'].split("m")
-        dict_offerDetailsAttr['terraceSqMeter'] = list_b[0]
-    except:
-        pass
-    try:
-        list_b = dict_table_of_att['Sklep'].split("m")
-        dict_offerDetailsAttr['cellarSqMeter'] = list_b[0]
-    except:
-        pass
-
-    # Parsing of priceNote, location, floor, buildingCondition, building, lift, ownership, ID, water, heating, waste, gas, electricity
-    try:
-        dict_offerDetailsAttr['priceNote'] = dict_table_of_att['Poznámka k ceně']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['location'] = dict_table_of_att['Umístění objektu']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['floor'] = dict_table_of_att['Podlaží']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['building'] = dict_table_of_att['Stavba']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['buildingCondition'] = dict_table_of_att['Stav objektu']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['lift'] = dict_table_of_att['Výtah']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['ownership'] = dict_table_of_att['Vlastnictví']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr["id"] = dict_table_of_att['ID zakázky']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr["idOrder"] = dict_table_of_att['ID']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['energyPerformanceOfBuilding'] = dict_table_of_att['Energetická náročnost budovy']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['water'] = dict_table_of_att['Voda']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['gas'] = dict_table_of_att['Plyn']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['heating'] = dict_table_of_att['Topení']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['waste'] = dict_table_of_att['Odpad']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['electricity'] = dict_table_of_att['Elektřina']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['heating'] = dict_table_of_att['Topení']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['connectivity'] = dict_table_of_att['Telekomunikace']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['transport'] = dict_table_of_att['Doprava']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['roads'] = dict_table_of_att['Komunikace']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['barrieFree'] = dict_table_of_att['Bezbariérový']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['lift'] = dict_table_of_att['Výtah']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['parking'] = dict_table_of_att['Parkování']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['terrace'] = dict_table_of_att['Terasa']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['cellar'] = dict_table_of_att['Sklep']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['garage'] = dict_table_of_att['Garáž']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['equipped'] = dict_table_of_att['Vybavení']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['transferToPersonalOwnership'] = dict_table_of_att['Převod do OV']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['yearOfApproval'] = dict_table_of_att['Rok kolaudace']
-    except:
-        pass
-
-    # Parsing of distances
-    try:
-        dict_offerDetailsAttr['playgroundDistance'] = dict_table_of_att['Hřiště']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['culturalHeritageDistance'] = dict_table_of_att['Kulturní památka']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['publicTransportDistance'] = dict_table_of_att['Bus MHD']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['sportsGroundDistance'] = dict_table_of_att['Sportoviště']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['tramDistance'] = dict_table_of_att['Tram']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['metroDistance'] = dict_table_of_att['Metro']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['trainDistance'] = dict_table_of_att['Vlak']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['sweetshopDistance'] = dict_table_of_att['Cukrárna']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['cinemaDistance'] = dict_table_of_att['Kino']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['convenienceStoreDistance'] = dict_table_of_att['Večerka']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['pubDistance'] = dict_table_of_att['Hospoda']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['theaterDistance'] = dict_table_of_att['Divadlo']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['veterinaryDistance'] = dict_table_of_att['Veterinář']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['restaurantDistance'] = dict_table_of_att['Restaurace']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['schoolDistance'] = dict_table_of_att['Škola']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['postOfficeDistance'] = dict_table_of_att['Pošta']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['storeDistance'] = dict_table_of_att['Obchod']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['trainDistance'] = dict_table_of_att['Vlak']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['pharmacyDistance'] = dict_table_of_att['Lékárna']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['atmDistance'] = dict_table_of_att['Bankomat']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['doctorDistance'] = dict_table_of_att['Lékař']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['preSchoolDistance'] = dict_table_of_att['Školka']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['naturalAttractionDistance'] = dict_table_of_att['Přírodní zajímavost']
-    except:
-        pass
-
-    list_offerDetailValues = dict_offerDetailsAttr.values()
-
-    # oAuth 2.0 Google
-    creds = None
-
-    # If modifying these scopes, delete the file token.pickle.
-    SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
-            creds = pickle.load(token)
-    # If there are no (valid) credentials available, let the user log in.
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                'C:\\Users\\pavel\\Disk Google\\finance\\nemovitosti\\nemovitostiSecretOauth.json', SCOPES)
-            creds = flow.run_local_server(port=8000)
-        # Save the credentials for the next run
-        with open('token.pickle', 'wb') as token:
-            pickle.dump(creds, token)
-
-    service = discovery.build('sheets', 'v4', credentials=creds)
-
-    # The ID of the spreadsheet to update.
-    spreadsheet_id = '1YPWOsBVm2qGOWJx4dgniopZ_Ekm91h7hxy2-enof7N8'
-
-    # Values will be appended after the last row of the table.
-    range_ = 'A1:BL2'
-
-    # How the input data should be interpreted.
-    value_input_option = 'RAW'
-
-    # How the input data should be inserted.
-    insert_data_option = 'INSERT_ROWS'
-
-    value_range_body = {"values": [["a", "b"]], "range": "A1:BL2"}
-
-    request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_,
-                                                     valueInputOption=value_input_option,
-                                                     insertDataOption=insert_data_option, body=value_range_body)
-    response = request.execute()
-
-    pprint(response)
-    print("offerSaved")
+    # # if offer was updated today, they state "today" instead of date therefore ...
+    # if dict_table_of_att['Aktualizace'] == "Dnes":
+    #     dict_offerDetailsAttr['offerUpdatedDate'] = time_now.strftime("%d/%m/%Y")
+    #
+    #     # if update is date, we use that formatted date
+    # else:
+    #     dtime = parse(str(dict_table_of_att['Aktualizace']))
+    #     dict_offerDetailsAttr['offerUpdatedDate'] = dtime.strftime("%d/%m/%Y")
+    #
+    # # Parsing of usable area, terrace and cellar
+    # try:
+    #     list_a = dict_table_of_att['Užitná plocha'].split("m")
+    #     dict_offerDetailsAttr['usableArea'] = list_a[0]
+    # except:
+    #     pass
+    # try:
+    #     list_b = dict_table_of_att['Terasa'].split("m")
+    #     dict_offerDetailsAttr['terraceSqMeter'] = list_b[0]
+    # except:
+    #     pass
+    # try:
+    #     list_b = dict_table_of_att['Sklep'].split("m")
+    #     dict_offerDetailsAttr['cellarSqMeter'] = list_b[0]
+    # except:
+    #     pass
+    #
+    # # Parsing of priceNote, location, floor, buildingCondition, building, lift, ownership, ID, water, heating, waste, gas, electricity
+    # try:
+    #     dict_offerDetailsAttr['priceNote'] = dict_table_of_att['Poznámka k ceně']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['location'] = dict_table_of_att['Umístění objektu']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['floor'] = dict_table_of_att['Podlaží']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['building'] = dict_table_of_att['Stavba']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['buildingCondition'] = dict_table_of_att['Stav objektu']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['lift'] = dict_table_of_att['Výtah']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['ownership'] = dict_table_of_att['Vlastnictví']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr["id"] = dict_table_of_att['ID zakázky']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr["idOrder"] = dict_table_of_att['ID']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['energyPerformanceOfBuilding'] = dict_table_of_att['Energetická náročnost budovy']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['water'] = dict_table_of_att['Voda']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['gas'] = dict_table_of_att['Plyn']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['heating'] = dict_table_of_att['Topení']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['waste'] = dict_table_of_att['Odpad']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['electricity'] = dict_table_of_att['Elektřina']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['heating'] = dict_table_of_att['Topení']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['connectivity'] = dict_table_of_att['Telekomunikace']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['transport'] = dict_table_of_att['Doprava']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['roads'] = dict_table_of_att['Komunikace']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['barrieFree'] = dict_table_of_att['Bezbariérový']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['lift'] = dict_table_of_att['Výtah']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['parking'] = dict_table_of_att['Parkování']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['terrace'] = dict_table_of_att['Terasa']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['cellar'] = dict_table_of_att['Sklep']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['garage'] = dict_table_of_att['Garáž']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['equipped'] = dict_table_of_att['Vybavení']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['transferToPersonalOwnership'] = dict_table_of_att['Převod do OV']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['yearOfApproval'] = dict_table_of_att['Rok kolaudace']
+    # except:
+    #     pass
+    #
+    # # Parsing of distances
+    # try:
+    #     dict_offerDetailsAttr['playgroundDistance'] = dict_table_of_att['Hřiště']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['culturalHeritageDistance'] = dict_table_of_att['Kulturní památka']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['publicTransportDistance'] = dict_table_of_att['Bus MHD']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['sportsGroundDistance'] = dict_table_of_att['Sportoviště']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['tramDistance'] = dict_table_of_att['Tram']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['metroDistance'] = dict_table_of_att['Metro']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['trainDistance'] = dict_table_of_att['Vlak']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['sweetshopDistance'] = dict_table_of_att['Cukrárna']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['cinemaDistance'] = dict_table_of_att['Kino']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['convenienceStoreDistance'] = dict_table_of_att['Večerka']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['pubDistance'] = dict_table_of_att['Hospoda']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['theaterDistance'] = dict_table_of_att['Divadlo']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['veterinaryDistance'] = dict_table_of_att['Veterinář']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['restaurantDistance'] = dict_table_of_att['Restaurace']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['schoolDistance'] = dict_table_of_att['Škola']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['postOfficeDistance'] = dict_table_of_att['Pošta']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['storeDistance'] = dict_table_of_att['Obchod']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['trainDistance'] = dict_table_of_att['Vlak']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['pharmacyDistance'] = dict_table_of_att['Lékárna']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['atmDistance'] = dict_table_of_att['Bankomat']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['doctorDistance'] = dict_table_of_att['Lékař']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['preSchoolDistance'] = dict_table_of_att['Školka']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['naturalAttractionDistance'] = dict_table_of_att['Přírodní zajímavost']
+    # except:
+    #     pass
+    #
+    # list_offerDetailValues = dict_offerDetailsAttr.values()
+    #
+    # # oAuth 2.0 Google
+    # creds = None
+    #
+    # # If modifying these scopes, delete the file token.pickle.
+    # SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+    #
+    # if os.path.exists('token.pickle'):
+    #     with open('token.pickle', 'rb') as token:
+    #         creds = pickle.load(token)
+    # # If there are no (valid) credentials available, let the user log in.
+    # if not creds or not creds.valid:
+    #     if creds and creds.expired and creds.refresh_token:
+    #         creds.refresh(Request())
+    #     else:
+    #         flow = InstalledAppFlow.from_client_secrets_file(
+    #             'C:\\Users\\pavel\\Disk Google\\finance\\nemovitosti\\nemovitostiSecretOauth.json', SCOPES)
+    #         creds = flow.run_local_server(port=8000)
+    #     # Save the credentials for the next run
+    #     with open('token.pickle', 'wb') as token:
+    #         pickle.dump(creds, token)
+    #
+    # service = discovery.build('sheets', 'v4', credentials=creds)
+    #
+    # # The ID of the spreadsheet to update.
+    # spreadsheet_id = '1YPWOsBVm2qGOWJx4dgniopZ_Ekm91h7hxy2-enof7N8'
+    #
+    # # Values will be appended after the last row of the table.
+    # range_ = 'A1:BL2'
+    #
+    # # How the input data should be interpreted.
+    # value_input_option = 'RAW'
+    #
+    # # How the input data should be inserted.
+    # insert_data_option = 'INSERT_ROWS'
+    #
+    # value_range_body = {"values": [["a", "b"]], "range": "A1:BL2"}
+    #
+    # request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_,
+    #                                                  valueInputOption=value_input_option,
+    #                                                  insertDataOption=insert_data_option, body=value_range_body)
+    # response = request.execute()
+    #
+    # pprint(response)
+    # print("offerSaved")

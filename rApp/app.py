@@ -6,8 +6,12 @@ Created on Sat Oct 17 19:32:08 2020
 """
 
 import acts
+import logging
 
 if __name__ == "__main__":
+    #logging setup
+    logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+
     # scrape first page of offers
     listOfOffers = acts.scrape_list_of_offers()
     print(listOfOffers)
@@ -20,4 +24,4 @@ if __name__ == "__main__":
 
     for i in list_d:
         acts.extractData(i)
-        print(i["meta_description"])
+        #print(i["meta_description"])
