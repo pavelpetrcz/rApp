@@ -1,0 +1,1510 @@
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_cellarSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 177, in extractData
+    s_cellarSqMeter = dict_detailsTableOfOffer['Sklep']
+KeyError: 'Sklep'
+root - WARNING - s_priceNote was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 183, in extractData
+    s_priceNote = dict_detailsTableOfOffer['Poznámka k cenì']
+KeyError: 'Poznámka k cenì'
+root - WARNING - s_location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 189, in extractData
+    s_location = dict_detailsTableOfOffer['Umístìní objektu']
+KeyError: 'Umístìní objektu'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+KeyError: 'Voda'
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+KeyError: 'Topení'
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+KeyError: 'Elektøina'
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 280, in extractData
+    for i in dict_detailsTableOfOffer['Doprava']:
+KeyError: 'Doprava'
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_offeredPrice was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 131, in extractData
+    s_offeredPrice = data["price_czk"]["value_raw"]
+KeyError: 'value_raw'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 282, in extractData
+    y.append(x)
+NameError: name 'y' is not defined
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 293, in extractData
+    z.append(x)
+NameError: name 'z' is not defined
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_offeredPrice was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 131, in extractData
+    s_offeredPrice = data["price_czk"]["value_raw"]
+KeyError: 'value_raw'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_cellarSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 177, in extractData
+    s_cellarSqMeter = dict_detailsTableOfOffer['Sklep']
+KeyError: 'Sklep'
+root - WARNING - s_location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 189, in extractData
+    s_location = dict_detailsTableOfOffer['Umístìní objektu']
+KeyError: 'Umístìní objektu'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+KeyError: 'Voda'
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+KeyError: 'Topení'
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+KeyError: 'Odpad'
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+KeyError: 'Elektøina'
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 280, in extractData
+    for i in dict_detailsTableOfOffer['Doprava']:
+KeyError: 'Doprava'
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_lift was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 213, in extractData
+    s_lift = dict_detailsTableOfOffer['Výtah']
+KeyError: 'Výtah'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 282, in extractData
+    y.append(x)
+NameError: name 'y' is not defined
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 293, in extractData
+    z.append(x)
+NameError: name 'z' is not defined
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 280, in extractData
+    for i in dict_detailsTableOfOffer['Doprava']:
+KeyError: 'Doprava'
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+KeyError: 'Odpad'
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 280, in extractData
+    for i in dict_detailsTableOfOffer['Doprava']:
+KeyError: 'Doprava'
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+KeyError: 'Elektøina'
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 280, in extractData
+    for i in dict_detailsTableOfOffer['Doprava']:
+KeyError: 'Doprava'
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_cellarSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 177, in extractData
+    s_cellarSqMeter = dict_detailsTableOfOffer['Sklep']
+KeyError: 'Sklep'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 282, in extractData
+    y.append(x)
+NameError: name 'y' is not defined
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 293, in extractData
+    z.append(x)
+NameError: name 'z' is not defined
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 189, in extractData
+    s_location = dict_detailsTableOfOffer['Umístìní objektu']
+KeyError: 'Umístìní objektu'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 282, in extractData
+    y.append(x)
+NameError: name 'y' is not defined
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 293, in extractData
+    z.append(x)
+NameError: name 'z' is not defined
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_cellarSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 177, in extractData
+    s_cellarSqMeter = dict_detailsTableOfOffer['Sklep']
+KeyError: 'Sklep'
+root - WARNING - s_priceNote was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 183, in extractData
+    s_priceNote = dict_detailsTableOfOffer['Poznámka k cenì']
+KeyError: 'Poznámka k cenì'
+root - WARNING - s_location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 189, in extractData
+    s_location = dict_detailsTableOfOffer['Umístìní objektu']
+KeyError: 'Umístìní objektu'
+root - WARNING - s_lift was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 213, in extractData
+    s_lift = dict_detailsTableOfOffer['Výtah']
+KeyError: 'Výtah'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+KeyError: 'Voda'
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+KeyError: 'Topení'
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+KeyError: 'Odpad'
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+KeyError: 'Elektøina'
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 280, in extractData
+    for i in dict_detailsTableOfOffer['Doprava']:
+KeyError: 'Doprava'
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_cellarSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 177, in extractData
+    s_cellarSqMeter = dict_detailsTableOfOffer['Sklep']
+KeyError: 'Sklep'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 282, in extractData
+    y.append(x)
+NameError: name 'y' is not defined
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 293, in extractData
+    z.append(x)
+NameError: name 'z' is not defined
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_priceNote was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 183, in extractData
+    s_priceNote = dict_detailsTableOfOffer['Poznámka k cenì']
+KeyError: 'Poznámka k cenì'
+root - WARNING - s_id was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 225, in extractData
+    s_id = dict_detailsTableOfOffer['ID zakázky']
+KeyError: 'ID zakázky'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 282, in extractData
+    y.append(x)
+NameError: name 'y' is not defined
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 293, in extractData
+    z.append(x)
+NameError: name 'z' is not defined
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 189, in extractData
+    s_location = dict_detailsTableOfOffer['Umístìní objektu']
+KeyError: 'Umístìní objektu'
+root - WARNING - s_lift was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 213, in extractData
+    s_lift = dict_detailsTableOfOffer['Výtah']
+KeyError: 'Výtah'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_energyPerformanceOfBuilding was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 237, in extractData
+    s_energyPerformanceOfBuilding = dict_detailsTableOfOffer['Energetická nároènost budovy']
+KeyError: 'Energetická nároènost budovy'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+KeyError: 'Voda'
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+KeyError: 'Topení'
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+KeyError: 'Odpad'
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+KeyError: 'Elektøina'
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 280, in extractData
+    for i in dict_detailsTableOfOffer['Doprava']:
+KeyError: 'Doprava'
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+TypeError: list indices must be integers or slices, not str
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 282, in extractData
+    y.append(x)
+NameError: name 'y' is not defined
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 189, in extractData
+    s_location = dict_detailsTableOfOffer['Umístìní objektu']
+KeyError: 'Umístìní objektu'
+root - WARNING - s_lift was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 213, in extractData
+    s_lift = dict_detailsTableOfOffer['Výtah']
+KeyError: 'Výtah'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+KeyError: 'Voda'
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+KeyError: 'Topení'
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+KeyError: 'Odpad'
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+KeyError: 'Elektøina'
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 280, in extractData
+    for i in dict_detailsTableOfOffer['Doprava']:
+KeyError: 'Doprava'
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 189, in extractData
+    s_location = dict_detailsTableOfOffer['Umístìní objektu']
+KeyError: 'Umístìní objektu'
+root - WARNING - s_lift was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 213, in extractData
+    s_lift = dict_detailsTableOfOffer['Výtah']
+KeyError: 'Výtah'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+KeyError: 'Voda'
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+KeyError: 'Topení'
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+KeyError: 'Odpad'
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+KeyError: 'Elektøina'
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 280, in extractData
+    for i in dict_detailsTableOfOffer['Doprava']:
+KeyError: 'Doprava'
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_cellarSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 177, in extractData
+    s_cellarSqMeter = dict_detailsTableOfOffer['Sklep']
+KeyError: 'Sklep'
+root - WARNING - s_location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 189, in extractData
+    s_location = dict_detailsTableOfOffer['Umístìní objektu']
+KeyError: 'Umístìní objektu'
+root - WARNING - s_lift was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 213, in extractData
+    s_lift = dict_detailsTableOfOffer['Výtah']
+KeyError: 'Výtah'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+KeyError: 'Voda'
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+KeyError: 'Topení'
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+KeyError: 'Odpad'
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+KeyError: 'Elektøina'
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 280, in extractData
+    for i in dict_detailsTableOfOffer['Doprava']:
+KeyError: 'Doprava'
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 189, in extractData
+    s_location = dict_detailsTableOfOffer['Umístìní objektu']
+KeyError: 'Umístìní objektu'
+root - WARNING - s_lift was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 213, in extractData
+    s_lift = dict_detailsTableOfOffer['Výtah']
+KeyError: 'Výtah'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+KeyError: 'Voda'
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+KeyError: 'Topení'
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+KeyError: 'Odpad'
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+KeyError: 'Elektøina'
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 280, in extractData
+    for i in dict_detailsTableOfOffer['Doprava']:
+KeyError: 'Doprava'
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_cellarSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 177, in extractData
+    s_cellarSqMeter = dict_detailsTableOfOffer['Sklep']
+KeyError: 'Sklep'
+root - WARNING - s_location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 189, in extractData
+    s_location = dict_detailsTableOfOffer['Umístìní objektu']
+KeyError: 'Umístìní objektu'
+root - WARNING - s_lift was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 213, in extractData
+    s_lift = dict_detailsTableOfOffer['Výtah']
+KeyError: 'Výtah'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+KeyError: 'Voda'
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+KeyError: 'Topení'
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+KeyError: 'Odpad'
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+KeyError: 'Elektøina'
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 280, in extractData
+    for i in dict_detailsTableOfOffer['Doprava']:
+KeyError: 'Doprava'
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'
+root - WARNING - s_terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 171, in extractData
+    s_terraceSqMeter = dict_detailsTableOfOffer['Terasa']
+KeyError: 'Terasa'
+root - WARNING - s_cellarSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 177, in extractData
+    s_cellarSqMeter = dict_detailsTableOfOffer['Sklep']
+KeyError: 'Sklep'
+root - WARNING - s_location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 189, in extractData
+    s_location = dict_detailsTableOfOffer['Umístìní objektu']
+KeyError: 'Umístìní objektu'
+root - WARNING - s_lift was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 213, in extractData
+    s_lift = dict_detailsTableOfOffer['Výtah']
+KeyError: 'Výtah'
+root - WARNING - s_idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 231, in extractData
+    s_idOrder = dict_detailsTableOfOffer['ID']
+KeyError: 'ID'
+root - WARNING - s_water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 243, in extractData
+    s_water = dict_detailsTableOfOffer['Voda']["value"]
+KeyError: 'Voda'
+root - WARNING - s_gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 249, in extractData
+    s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+KeyError: 'Plyn'
+root - WARNING - s_heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 255, in extractData
+    s_heating = dict_detailsTableOfOffer['Topení']["value"]
+KeyError: 'Topení'
+root - WARNING - s_waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 261, in extractData
+    s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+KeyError: 'Odpad'
+root - WARNING - s_electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 267, in extractData
+    s_electricity = dict_detailsTableOfOffer['Elektøina']["value"]
+KeyError: 'Elektøina'
+root - WARNING - s_connectivity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 273, in extractData
+    s_connectivity = dict_detailsTableOfOffer['Telekomunikace']
+KeyError: 'Telekomunikace'
+root - WARNING - s_transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 280, in extractData
+    for i in dict_detailsTableOfOffer['Doprava']:
+KeyError: 'Doprava'
+root - WARNING - s_roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 291, in extractData
+    for i in dict_detailsTableOfOffer['Komunikace']:
+KeyError: 'Komunikace'
+root - WARNING - s_barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 301, in extractData
+    s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+KeyError: 'Bezbariérový'
+root - WARNING - s_parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 307, in extractData
+    s_parking = dict_detailsTableOfOffer['Parkování']
+KeyError: 'Parkování'
+root - WARNING - s_transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 329, in extractData
+    s_transferToPersonalOwnership = dict_detailsTableOfOffer['Pøevod do OV']
+KeyError: 'Pøevod do OV'
+root - WARNING - s_yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\acts.py", line 335, in extractData
+    s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+KeyError: 'Rok kolaudace'

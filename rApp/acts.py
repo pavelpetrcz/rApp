@@ -77,7 +77,7 @@ def scrape_list_of_offers():
     a = 0
     listOfUrls = []
 
-    while (a < itemsPerPage):
+    while itemsPerPage > a:
         parseUrlOfOfferDetail = soupHtml.findAll("a", {"class": "title"})[a]["href"]
         detailUrl = baseUrl + parseUrlOfOfferDetail
         listOfUrls.append(detailUrl)
@@ -143,15 +143,12 @@ def extractData(data):
     # =====================================================
     # set now
     #time_now = datetime.fromtimestamp(time.time())
-
+    dict_detailsTableOfOffer = {}
     d = data["items"]
     for i in d:
-        key = d["name"]
-        value = d["value"]
+        key = i["name"]
+        value = i["value"]
         dict_detailsTableOfOffer[key] = value
-
-
-    print(dict_offerDetailsAttr)
 
     # # if offer was updated today, they state "today" instead of date therefore ...
     # if dict_table_of_att['Aktualizace'] == "Dnes":
@@ -243,31 +240,31 @@ def extractData(data):
         logging.warning("s_energyPerformanceOfBuilding was not grabbed.", exc_info=True)
         pass
     try:
-        s_water = dict_detailsTableOfOffer['Voda']
+        s_water = dict_detailsTableOfOffer['Voda']["value"]
         dict_offerDetailsAttr['water'] = s_water
     except:
         logging.warning("s_water was not grabbed.", exc_info=True)
         pass
     try:
-        s_gas = dict_detailsTableOfOffer['Plyn']
+        s_gas = dict_detailsTableOfOffer['Plyn']["value"]
         dict_offerDetailsAttr['gas'] = s_gas
     except:
         logging.warning("s_gas was not grabbed.", exc_info=True)
         pass
     try:
-        s_heating = dict_detailsTableOfOffer['Topení']
+        s_heating = dict_detailsTableOfOffer['Topení']["value"]
         dict_offerDetailsAttr['heating'] = s_heating
     except:
         logging.warning("s_heating was not grabbed.", exc_info=True)
         pass
     try:
-        s_waste = dict_detailsTableOfOffer['Odpad']
+        s_waste = dict_detailsTableOfOffer['Odpad']["value"]
         dict_offerDetailsAttr['waste'] = s_waste
     except:
         logging.warning("s_waste was not grabbed.", exc_info=True)
         pass
     try:
-        s_electricity = dict_detailsTableOfOffer['Elektřina']
+        s_electricity = dict_detailsTableOfOffer['Elektřina']["value"]
         dict_offerDetailsAttr['electricity'] = s_electricity
     except:
         logging.warning("s_electricity was not grabbed.", exc_info=True)
@@ -279,147 +276,167 @@ def extractData(data):
         logging.warning("s_connectivity was not grabbed.", exc_info=True)
         pass
     try:
-        s_transport = dict_detailsTableOfOffer['Doprava']
+        separator = ', '
+        for i in dict_detailsTableOfOffer['Doprava']:
+            x = i["value"]
+            y.append(x)
+        s_transport = separator.join(y)
+        print(s_transport)
         dict_offerDetailsAttr['transport'] = s_transport
     except:
         logging.warning("s_transport was not grabbed.", exc_info=True)
         pass
     try:
-        dict_offerDetailsAttr['roads'] = dict_table_of_att['Komunikace']
+        separator = ', '
+        for i in dict_detailsTableOfOffer['Komunikace']:
+            x = i["value"]
+            z.append(x)
+        s_roads = separator.join(z)
+        print(s_roads)
+        dict_offerDetailsAttr['roads'] = s_roads
     except:
+        logging.warning("s_roads was not grabbed.", exc_info=True)
         pass
     try:
-        dict_offerDetailsAttr['barrieFree'] = dict_table_of_att['Bezbariérový']
+        s_barrieFree = dict_detailsTableOfOffer['Bezbariérový']
+        dict_offerDetailsAttr['barrieFree'] = s_barrieFree
     except:
+        logging.warning("s_barrieFree was not grabbed.", exc_info=True)
         pass
     try:
-        dict_offerDetailsAttr['lift'] = dict_table_of_att['Výtah']
+        s_parking = dict_detailsTableOfOffer['Parkování']
+        dict_offerDetailsAttr['parking'] = s_parking
     except:
+        logging.warning("s_parking was not grabbed.", exc_info=True)
+        pass
+    # try:
+    #     dict_offerDetailsAttr['terrace'] = dict_table_of_att['Terasa']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['cellar'] = dict_table_of_att['Sklep']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['garage'] = dict_table_of_att['Garáž']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['equipped'] = dict_table_of_att['Vybavení']
+    # except:
+    #     pass
+    try:
+        s_transferToPersonalOwnership = dict_detailsTableOfOffer['Převod do OV']
+        dict_offerDetailsAttr['transferToPersonalOwnership'] = s_transferToPersonalOwnership
+    except:
+        logging.warning("s_transferToPersonalOwnership was not grabbed.", exc_info=True)
         pass
     try:
-        dict_offerDetailsAttr['parking'] = dict_table_of_att['Parkování']
+        s_yearOfApproval = dict_detailsTableOfOffer['Rok kolaudace']
+        dict_offerDetailsAttr['yearOfApproval'] = s_yearOfApproval
     except:
+        logging.warning("s_yearOfApproval was not grabbed.", exc_info=True)
         pass
-    try:
-        dict_offerDetailsAttr['terrace'] = dict_table_of_att['Terasa']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['cellar'] = dict_table_of_att['Sklep']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['garage'] = dict_table_of_att['Garáž']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['equipped'] = dict_table_of_att['Vybavení']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['transferToPersonalOwnership'] = dict_table_of_att['Převod do OV']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['yearOfApproval'] = dict_table_of_att['Rok kolaudace']
-    except:
-        pass
+
+    #print(dict_offerDetailsAttr)
 
     # Parsing of distances
-    try:
-        dict_offerDetailsAttr['playgroundDistance'] = dict_table_of_att['Hřiště']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['culturalHeritageDistance'] = dict_table_of_att['Kulturní památka']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['publicTransportDistance'] = dict_table_of_att['Bus MHD']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['sportsGroundDistance'] = dict_table_of_att['Sportoviště']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['tramDistance'] = dict_table_of_att['Tram']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['metroDistance'] = dict_table_of_att['Metro']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['trainDistance'] = dict_table_of_att['Vlak']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['sweetshopDistance'] = dict_table_of_att['Cukrárna']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['cinemaDistance'] = dict_table_of_att['Kino']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['convenienceStoreDistance'] = dict_table_of_att['Večerka']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['pubDistance'] = dict_table_of_att['Hospoda']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['theaterDistance'] = dict_table_of_att['Divadlo']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['veterinaryDistance'] = dict_table_of_att['Veterinář']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['restaurantDistance'] = dict_table_of_att['Restaurace']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['schoolDistance'] = dict_table_of_att['Škola']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['postOfficeDistance'] = dict_table_of_att['Pošta']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['storeDistance'] = dict_table_of_att['Obchod']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['trainDistance'] = dict_table_of_att['Vlak']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['pharmacyDistance'] = dict_table_of_att['Lékárna']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['atmDistance'] = dict_table_of_att['Bankomat']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['doctorDistance'] = dict_table_of_att['Lékař']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['preSchoolDistance'] = dict_table_of_att['Školka']
-    except:
-        pass
-    try:
-        dict_offerDetailsAttr['naturalAttractionDistance'] = dict_table_of_att['Přírodní zajímavost']
-    except:
-        pass
-
-    list_offerDetailValues = dict_offerDetailsAttr.values()
+    # try:
+    #     s_playgroundDistance = dict_detailsTableOfOffer['Hřiště']
+    #     dict_offerDetailsAttr['playgroundDistance'] = s_playgroundDistance
+    # except:
+    #     logging.warning("s_playgroundDistance was not grabbed.", exc_info=True)
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['culturalHeritageDistance'] = dict_table_of_att['Kulturní památka']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['publicTransportDistance'] = dict_table_of_att['Bus MHD']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['sportsGroundDistance'] = dict_table_of_att['Sportoviště']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['tramDistance'] = dict_table_of_att['Tram']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['metroDistance'] = dict_table_of_att['Metro']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['trainDistance'] = dict_table_of_att['Vlak']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['sweetshopDistance'] = dict_table_of_att['Cukrárna']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['cinemaDistance'] = dict_table_of_att['Kino']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['convenienceStoreDistance'] = dict_table_of_att['Večerka']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['pubDistance'] = dict_table_of_att['Hospoda']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['theaterDistance'] = dict_table_of_att['Divadlo']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['veterinaryDistance'] = dict_table_of_att['Veterinář']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['restaurantDistance'] = dict_table_of_att['Restaurace']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['schoolDistance'] = dict_table_of_att['Škola']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['postOfficeDistance'] = dict_table_of_att['Pošta']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['storeDistance'] = dict_table_of_att['Obchod']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['trainDistance'] = dict_table_of_att['Vlak']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['pharmacyDistance'] = dict_table_of_att['Lékárna']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['atmDistance'] = dict_table_of_att['Bankomat']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['doctorDistance'] = dict_table_of_att['Lékař']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['preSchoolDistance'] = dict_table_of_att['Školka']
+    # except:
+    #     pass
+    # try:
+    #     dict_offerDetailsAttr['naturalAttractionDistance'] = dict_table_of_att['Přírodní zajímavost']
+    # except:
+    #     pass
+    #
+    # list_offerDetailValues = dict_offerDetailsAttr.values()
     #
     # # oAuth 2.0 Google
     # creds = None
