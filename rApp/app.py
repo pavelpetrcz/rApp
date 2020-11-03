@@ -7,6 +7,7 @@ Created on Sat Oct 17 19:32:08 2020
 
 import acts
 import logging
+import flows
 
 if __name__ == "__main__":
     #logging setup
