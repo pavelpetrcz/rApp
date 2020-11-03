@@ -6,12 +6,10 @@ Created on Sat Oct 17 19:26:21 2020
 """
 from __future__ import print_function
 
-import json
 import logging
 import math
 import os.path
 import pickle
-import re
 import time
 import uuid
 from datetime import datetime
@@ -119,7 +117,7 @@ def extractData(data):
     try:
         s_offerName = data["name"]["value"]
         dict_offerDetailsAttr["offerName"] = s_offerName
-    except:
+    except KeyError:
         logging.warning("s_offerName was not grabbed.", exc_info=True)
         pass
 
@@ -127,14 +125,14 @@ def extractData(data):
     try:
         s_address = data["locality"]["value"]
         dict_offerDetailsAttr["address"] = s_address
-    except:
+    except KeyError:
         logging.warning("s_address was not grabbed.", exc_info=True)
         pass
 
     # price
     try:
         s_offeredPrice = data["price_czk"]["value_raw"]
-    except:
+    except KeyError:
         s_offeredPrice = 000000000
         logging.warning("s_offeredPrice was not grabbed.", exc_info=True)
         pass
@@ -176,7 +174,6 @@ def extractData(data):
         "id": "ID zakázky",
         "idOrder": "ID",
         "energyPerformanceOfBuilding": "Energetická náročnost budovy",
-        "transport": "Doprava",
         "roads": "Komunikace",
         "barrieFree": "Bezbariérový",
         "parking": "Parkování",
@@ -190,38 +187,44 @@ def extractData(data):
     for key, value in dict_detailsAttr_binding.items():
         try:
             dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
-        except:
+        except KeyError:
             logging.warning(key + " was not grabbed.", exc_info=True)
 
     # specific types of attribues
     try:
-        s_water = dict_detailsTableOfOffer['Voda']["value"]
-        dict_offerDetailsAttr['water'] = s_water
-    except:
+        s_transport = dict_detailsTableOfOffer['Doprava'][0]["value"]
+        dict_offerDetailsAttr['transport'] = s_transport
+    except KeyError:
         logging.warning("s_water was not grabbed.", exc_info=True)
         pass
     try:
-        s_gas = dict_detailsTableOfOffer['Plyn']["value"]
+        s_water = dict_detailsTableOfOffer['Voda'][0]["value"]
+        dict_offerDetailsAttr['water'] = s_water
+    except KeyError:
+        logging.warning("s_water was not grabbed.", exc_info=True)
+        pass
+    try:
+        s_gas = dict_detailsTableOfOffer['Plyn'][0]["value"]
         dict_offerDetailsAttr['gas'] = s_gas
-    except:
+    except KeyError:
         logging.warning("s_gas was not grabbed.", exc_info=True)
         pass
     try:
-        s_heating = dict_detailsTableOfOffer['Topení']["value"]
+        s_heating = dict_detailsTableOfOffer['Topení'][0]["value"]
         dict_offerDetailsAttr['heating'] = s_heating
-    except:
+    except KeyError:
         logging.warning("s_heating was not grabbed.", exc_info=True)
         pass
     try:
-        s_waste = dict_detailsTableOfOffer['Odpad']["value"]
+        s_waste = dict_detailsTableOfOffer['Odpad'][0]["value"]
         dict_offerDetailsAttr['waste'] = s_waste
-    except:
+    except KeyError:
         logging.warning("s_waste was not grabbed.", exc_info=True)
         pass
     try:
-        s_electricity = dict_detailsTableOfOffer['Elektřina']["value"]
+        s_electricity = dict_detailsTableOfOffer['Elektřina'][0]["value"]
         dict_offerDetailsAttr['electricity'] = s_electricity
-    except:
+    except KeyError:
         logging.warning("s_electricity was not grabbed.", exc_info=True)
         pass
 
@@ -260,11 +263,11 @@ def extractData(data):
     for key, value in dict_distance_binding.items():
         try:
             dict_offerDetailsAttr[key] = dict_poi[value]
-        except:
+        except KeyError:
             logging.warning(key + " was not grabbed.", exc_info=True)
 
-    print(dict_offerDetailsAttr)
-
+    list_onlyValues = list(dict_offerDetailsAttr.values())
+    print(list_onlyValues)
     # oAuth 2.0 Google
     creds = None
 
@@ -300,7 +303,7 @@ def extractData(data):
     # How the input data should be inserted.
     insert_data_option = 'INSERT_ROWS'
 
-    value_range_body = {"values": [["a", "b"]], "range": "A1:BL2"}
+    value_range_body = {"values": [list_onlyValues], "range": "A1:BL2"}
 
     request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_,
                                                      valueInputOption=value_input_option,
@@ -308,6 +311,7 @@ def extractData(data):
     response = request.execute()
 
     pprint(response)
+
 
 def getStringFromList(inp, field):
     """
@@ -334,9 +338,9 @@ def convertToKeyValue(data, keyfield, valueField, roundDown):
     for i in data:
         key = i[keyfield]
         value = i[valueField]
-        if roundDown:
-            value = math.floor(value)
-        else:
-            continue
         dict_result[key] = value
+        if roundDown:
+            rvalue = math.floor(value)
+            dict_result[key] = rvalue
+
     return dict_result

@@ -7,7 +7,7 @@ Created on Sat Oct 17 19:32:08 2020
 
 import acts
 import logging
-import flows
+# import flows
 
 if __name__ == "__main__":
     #logging setup
@@ -25,4 +25,3 @@ if __name__ == "__main__":
 
     for i in list_d:
         acts.extractData(i)
-        #print(i["meta_description"])
