@@ -26,10 +26,14 @@ from googleapiclient import discovery
 from selenium import webdriver
 
 
-def get_offer_json(id):
+def get_offer_json(partOfUrl):
+    """
+    :param partOfUrl: id of offer parsed from HTML
+    :return: complet URL of offer
+    """
     url = "https://www.sreality.cz/api/cs/v2/estates/"
 
-    final_url = url + id
+    final_url = url + partOfUrl
     time.sleep(1)
     response = requests.get(final_url)
     result = response.json()
@@ -157,33 +161,33 @@ def extractData(data):
 
     # Parsing of values from table
     dict_detailsAttr_binding = {
-        "usableArea" : "Užitná plocha",
-        "terraceSqMeter" : "Terasa",
+        "usableArea": "Užitná plocha",
+        "terraceSqMeter": "Terasa",
         "terrace": "Terasa",
-        "cellarSqMeter" : "Sklep",
+        "cellarSqMeter": "Sklep",
         "cellar": "Sklep",
-        "priceNote" : "Poznámka k ceně",
-        "location" : "Umístění objektu",
-        "floor" : "Podlaží",
-        "building" : "Stavba",
-        "buildingCondition" : "Stav objektu",
-        "lift" : "Výtah",
-        "ownership" : "Vlastnictví",
-        "id" : "ID zakázky",
-        "idOrder" : "ID",
+        "priceNote": "Poznámka k ceně",
+        "location": "Umístění objektu",
+        "floor": "Podlaží",
+        "building": "Stavba",
+        "buildingCondition": "Stav objektu",
+        "lift": "Výtah",
+        "ownership": "Vlastnictví",
+        "id": "ID zakázky",
+        "idOrder": "ID",
         "energyPerformanceOfBuilding": "Energetická náročnost budovy",
-        "transport" : "Doprava",
-        "roads" : "Komunikace",
-        "barrieFree" : "Bezbariérový",
-        "parking" : "Parkování",
-        "garage" : "Garáž",
-        "equipped" : "Vybavení",
-        "transferToPersonalOwnership" : "Převod do OV",
-        "yearOfApproval" : "Rok kolaudace"
+        "transport": "Doprava",
+        "roads": "Komunikace",
+        "barrieFree": "Bezbariérový",
+        "parking": "Parkování",
+        "garage": "Garáž",
+        "equipped": "Vybavení",
+        "transferToPersonalOwnership": "Převod do OV",
+        "yearOfApproval": "Rok kolaudace"
     }
 
     # go through all attributes
-    for key,value in dict_detailsAttr_binding.items():
+    for key, value in dict_detailsAttr_binding.items():
         try:
             dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
         except:
@@ -229,28 +233,28 @@ def extractData(data):
         logging.info("Offer does not contains POI data.")
 
     dict_distance_binding = {
-        "playgroundDistance" : "Hřiště",
-        "culturalHeritageDistance" : "Kulturní památka",
-        "publicTransportDistance" : "Bus MHD",
-        "sportsGroundDistance" : "Sportoviště",
-        "tramDistance" : "Tram",
-        "metroDistance" : "Metro",
-        "trainDistance" : "Vlak",
-        "sweetshopDistance" : "Cukrárna",
-        "cinemaDistance" : "Kino",
-        "convenienceStoreDistance" : "Večerka",
-        "pubDistance" : "Hospoda",
-        "theaterDistance" : "Divadlo",
-        "veterinaryDistance" : "Veterinář",
-        "restaurantDistance" : "Restaurace",
-        "schoolDistance" : "Škola",
-        "postOfficeDistance" : "Pošta",
-        "storeDistance" : "Obchod",
-        "pharmacyDistance" : "Lékárna",
-        "atmDistance" : "Bankomat",
-        "doctorDistance" : "Lékař",
-        "preSchoolDistance" : "Školka",
-        "naturalAttractionDistance" : "Přírodní zajímavost"
+        "playgroundDistance": "Hřiště",
+        "culturalHeritageDistance": "Kulturní památka",
+        "publicTransportDistance": "Bus MHD",
+        "sportsGroundDistance": "Sportoviště",
+        "tramDistance": "Tram",
+        "metroDistance": "Metro",
+        "trainDistance": "Vlak",
+        "sweetshopDistance": "Cukrárna",
+        "cinemaDistance": "Kino",
+        "convenienceStoreDistance": "Večerka",
+        "pubDistance": "Hospoda",
+        "theaterDistance": "Divadlo",
+        "veterinaryDistance": "Veterinář",
+        "restaurantDistance": "Restaurace",
+        "schoolDistance": "Škola",
+        "postOfficeDistance": "Pošta",
+        "storeDistance": "Obchod",
+        "pharmacyDistance": "Lékárna",
+        "atmDistance": "Bankomat",
+        "doctorDistance": "Lékař",
+        "preSchoolDistance": "Školka",
+        "naturalAttractionDistance": "Přírodní zajímavost"
     }
 
     for key, value in dict_distance_binding.items():
@@ -261,64 +265,60 @@ def extractData(data):
 
     print(dict_offerDetailsAttr)
 
+    # oAuth 2.0 Google
+    creds = None
 
-    # # oAuth 2.0 Google
-    # creds = None
-    #
-    # # If modifying these scopes, delete the file token.pickle.
-    # SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-    #
-    # if os.path.exists('token.pickle'):
-    #     with open('token.pickle', 'rb') as token:
-    #         creds = pickle.load(token)
-    # # If there are no (valid) credentials available, let the user log in.
-    # if not creds or not creds.valid:
-    #     if creds and creds.expired and creds.refresh_token:
-    #         creds.refresh(Request())
-    #     else:
-    #         flow = InstalledAppFlow.from_client_secrets_file(
-    #             'C:\\Users\\pavel\\Disk Google\\finance\\nemovitosti\\nemovitostiSecretOauth.json', SCOPES)
-    #         creds = flow.run_local_server(port=8000)
-    #     # Save the credentials for the next run
-    #     with open('token.pickle', 'wb') as token:
-    #         pickle.dump(creds, token)
-    #
-    # service = discovery.build('sheets', 'v4', credentials=creds)
-    #
-    # # The ID of the spreadsheet to update.
-    # spreadsheet_id = '1YPWOsBVm2qGOWJx4dgniopZ_Ekm91h7hxy2-enof7N8'
-    #
-    # # Values will be appended after the last row of the table.
-    # range_ = 'A1:BL2'
-    #
-    # # How the input data should be interpreted.
-    # value_input_option = 'RAW'
-    #
-    # # How the input data should be inserted.
-    # insert_data_option = 'INSERT_ROWS'
-    #
-    # value_range_body = {"values": [["a", "b"]], "range": "A1:BL2"}
-    #
-    # request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_,
-    #                                                  valueInputOption=value_input_option,
-    #                                                  insertDataOption=insert_data_option, body=value_range_body)
-    # response = request.execute()
-    #
-    # pprint(response)
-    # print("offerSaved")
+    # If modifying these scopes, delete the file token.pickle.
+    SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
+    if os.path.exists('token.pickle'):
+        with open('token.pickle', 'rb') as token:
+            creds = pickle.load(token)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                'C:\\Users\\pavel\\Disk Google\\finance\\nemovitosti\\nemovitostiSecretOauth.json', SCOPES)
+            creds = flow.run_local_server(port=8000)
+        # Save the credentials for the next run
+        with open('token.pickle', 'wb') as token:
+            pickle.dump(creds, token)
 
-def getStringFromList(input, field):
+    service = discovery.build('sheets', 'v4', credentials=creds)
+
+    # The ID of the spreadsheet to update.
+    spreadsheet_id = '1YPWOsBVm2qGOWJx4dgniopZ_Ekm91h7hxy2-enof7N8'
+
+    # Values will be appended after the last row of the table.
+    range_ = 'A1:BL2'
+
+    # How the input data should be interpreted.
+    value_input_option = 'RAW'
+
+    # How the input data should be inserted.
+    insert_data_option = 'INSERT_ROWS'
+
+    value_range_body = {"values": [["a", "b"]], "range": "A1:BL2"}
+
+    request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_,
+                                                     valueInputOption=value_input_option,
+                                                     insertDataOption=insert_data_option, body=value_range_body)
+    response = request.execute()
+
+    pprint(response)
+
+def getStringFromList(inp, field):
     """
-      :param input: list of all items
+      :param inp: list of all items
       :param field: name of field where search
       :return: string of values separated by comma
       """
     separator = ', '
-    for i in input[field]:
+    for i in inp[field]:
         x = i["value"]
-        y = []
-        y.append(x)
+        y = [x]
     return separator.join(y)
 
 
@@ -334,7 +334,7 @@ def convertToKeyValue(data, keyfield, valueField, roundDown):
     for i in data:
         key = i[keyfield]
         value = i[valueField]
-        if (roundDown):
+        if roundDown:
             value = math.floor(value)
         else:
             continue
