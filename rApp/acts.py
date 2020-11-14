@@ -24,6 +24,7 @@ from googleapiclient import discovery
 from selenium import webdriver
 
 
+
 def get_offer_json(partOfUrl):
     """
     :param partOfUrl: id of offer parsed from HTML
@@ -81,6 +82,7 @@ def scrape_list_of_offers():
     listOfUrls = []
 
     while itemsPerPage > a:
+        href = "href"
         parseUrlOfOfferDetail = soupHtml.findAll("a", {"class": "title"})[a]["href"]
         detailUrl = baseUrl + parseUrlOfOfferDetail
         listOfUrls.append(detailUrl)
@@ -143,19 +145,20 @@ def extractData(data):
     dict_offerDetailsAttr["desc"] = s_desc
 
     # Parsing additional data from table below description
-    # =====================================================
     d = data["items"]
     dict_detailsTableOfOffer = convertToKeyValue(d, "name", "value", False)
 
-    # if offer was updated today, they state "today" instead of date therefore ...
-    now = datetime.now()
+    # set update date of offer
+    today = datetime.date.today()
+    yesterday = today - datetime.timedelta(days=1)
     if dict_detailsTableOfOffer['Aktualizace'] == "Dnes":
-        dict_offerDetailsAttr['offerUpdatedDate'] = now.strftime("%d/%m/%Y")
-
-        # if update is date, we use that formatted date
+        dateOfUpdate = today
+    elif dict_detailsTableOfOffer['Aktualizace'] == "Včera":
+        dateOfUpdate = yesterday
     else:
-        dtime = parse(str(dict_detailsTableOfOffer['Aktualizace']))
-        dict_offerDetailsAttr['offerUpdatedDate'] = dtime.strftime("%d/%m/%Y")
+        dateOfUpdate = parse(str(dict_detailsTableOfOffer['Aktualizace']))
+
+    dict_offerDetailsAttr['offerUpdatedDate'] = dateOfUpdate.strftime("%d/%m/%Y")
 
     # Parsing of values from table
     dict_detailsAttr_binding = {
@@ -174,7 +177,6 @@ def extractData(data):
         "id": "ID zakázky",
         "idOrder": "ID",
         "energyPerformanceOfBuilding": "Energetická náročnost budovy",
-        "roads": "Komunikace",
         "barrieFree": "Bezbariérový",
         "parking": "Parkování",
         "garage": "Garáž",
@@ -227,8 +229,15 @@ def extractData(data):
     except KeyError:
         logging.warning("s_electricity was not grabbed.", exc_info=True)
         pass
+    try:
+        s_roads = dict_detailsTableOfOffer['Komunikace'][0]["value"]
+        dict_offerDetailsAttr['electricity'] = s_roads
+    except KeyError:
+        logging.warning("s_electricity was not grabbed.", exc_info=True)
+        pass
 
     # Parsing of distances from json object
+    global dict_poi
     try:
         dist = data["poi"]
         dict_poi = convertToKeyValue(dist, "name", "distance", True)
@@ -260,14 +269,26 @@ def extractData(data):
         "naturalAttractionDistance": "Přírodní zajímavost"
     }
 
+    # for each distance attribues add them to final dict
+
     for key, value in dict_distance_binding.items():
         try:
             dict_offerDetailsAttr[key] = dict_poi[value]
         except KeyError:
             logging.warning(key + " was not grabbed.", exc_info=True)
+        except NameError:
+            logging.info("Missing values in offer.", exc_info=True)
+            continue
 
+    # replace None with 0
+    for key, value in dict_offerDetailsAttr.items():
+        if value is None:
+            dict_offerDetailsAttr[key] = "NA"
+        else:
+            continue
+    print(dict_offerDetailsAttr)
     list_onlyValues = list(dict_offerDetailsAttr.values())
-    print(list_onlyValues)
+
     # oAuth 2.0 Google
     creds = None
 
@@ -320,6 +341,7 @@ def getStringFromList(inp, field):
       :return: string of values separated by comma
       """
     separator = ', '
+    global y
     for i in inp[field]:
         x = i["value"]
         y = [x]
