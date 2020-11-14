@@ -6,93 +6,22 @@ Created on Sat Oct 17 19:26:21 2020
 """
 from __future__ import print_function
 
+import actions
 import logging
-import math
 import os.path
 import pickle
-import time
 import uuid
-from datetime import datetime
-from pprint import pprint
 
-import requests
-from bs4 import BeautifulSoup
+from datetime import date
+from datetime import timedelta
+
 from dateutil.parser import parse
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient import discovery
-from selenium import webdriver
 
 
-
-def get_offer_json(partOfUrl):
-    """
-    :param partOfUrl: id of offer parsed from HTML
-    :return: complet URL of offer
-    """
-    url = "https://www.sreality.cz/api/cs/v2/estates/"
-
-    final_url = url + partOfUrl
-    time.sleep(1)
-    response = requests.get(final_url)
-    result = response.json()
-    return result
-
-
-def scrape_list_of_offers():
-    startingPointUrl = "https://www.sreality.cz/hledani/prodej/byty"
-
-    # base Url
-    baseUrl = "https://www.sreality.cz"
-
-    scrapeAgain = True
-    scrapeSleep = 2
-    itemsPerPage = 0
-    soupHtml = ""
-
-    while scrapeAgain:
-        # open chrome
-        browser = webdriver.Chrome()
-
-        # open URL
-        browser.get(startingPointUrl)
-        time.sleep(scrapeSleep)
-
-        # download page in HTML
-        html = browser.page_source
-
-        # close chrome
-        browser.close()
-
-        # parse html with BS
-        soupHtml = BeautifulSoup(html, "html.parser")
-
-        # count of item in scraped page
-        itemsPerPage = len(soupHtml.findAll("a", {"class": "title"}))
-
-        # if scraping was not successful do it again slower
-        if itemsPerPage == 0:
-            scrapeAgain = True
-            scrapeSleep += 1
-        else:
-            scrapeAgain = False
-
-    # parsed URLs of all offer at page
-    a = 0
-    listOfUrls = []
-
-    while itemsPerPage > a:
-        href = "href"
-        parseUrlOfOfferDetail = soupHtml.findAll("a", {"class": "title"})[a]["href"]
-        detailUrl = baseUrl + parseUrlOfOfferDetail
-        listOfUrls.append(detailUrl)
-        a = a + 1
-
-    # concatate url for next scrape
-    return listOfUrls
-
-
-def extractData(data):
+def execute(data):
     # # dict pro všechny informace z nabídky
     list_offerDetailsAttr = ["internalId", "idOrder", "id", "offerName", "address", "offeredPrice", "priceNote",
                              "desc", "utilitiesCosts", "yearOfReconstruction",
@@ -109,11 +38,8 @@ def extractData(data):
                              "trainDistance", "postOfficeDistance"]
     dict_offerDetailsAttr = dict.fromkeys(list_offerDetailsAttr)
 
-    # generate unique random id in hexadecimal
-    g = uuid.uuid4().hex
-
     # # set as internal id
-    dict_offerDetailsAttr["internalId"] = g
+    dict_offerDetailsAttr["internalId"] = uuid.uuid4().hex
 
     # Name
     try:
@@ -131,7 +57,7 @@ def extractData(data):
         logging.warning("s_address was not grabbed.", exc_info=True)
         pass
 
-    # price
+    # Price
     try:
         s_offeredPrice = data["price_czk"]["value_raw"]
     except KeyError:
@@ -146,11 +72,11 @@ def extractData(data):
 
     # Parsing additional data from table below description
     d = data["items"]
-    dict_detailsTableOfOffer = convertToKeyValue(d, "name", "value", False)
+    dict_detailsTableOfOffer = actions.convertToKeyValue(d, "name", "value", False)
 
     # set update date of offer
-    today = datetime.date.today()
-    yesterday = today - datetime.timedelta(days=1)
+    today = date.today()
+    yesterday = today - timedelta(days=1)
     if dict_detailsTableOfOffer['Aktualizace'] == "Dnes":
         dateOfUpdate = today
     elif dict_detailsTableOfOffer['Aktualizace'] == "Včera":
@@ -160,7 +86,7 @@ def extractData(data):
 
     dict_offerDetailsAttr['offerUpdatedDate'] = dateOfUpdate.strftime("%d/%m/%Y")
 
-    # Parsing of values from table
+    # Parsing of values from table with details of offer
     dict_detailsAttr_binding = {
         "usableArea": "Užitná plocha",
         "terraceSqMeter": "Terasa",
@@ -185,62 +111,34 @@ def extractData(data):
         "yearOfApproval": "Rok kolaudace"
     }
 
-    # go through all attributes
     for key, value in dict_detailsAttr_binding.items():
         try:
             dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
         except KeyError:
             logging.warning(key + " was not grabbed.", exc_info=True)
 
-    # specific types of attribues
-    try:
-        s_transport = dict_detailsTableOfOffer['Doprava'][0]["value"]
-        dict_offerDetailsAttr['transport'] = s_transport
-    except KeyError:
-        logging.warning("s_water was not grabbed.", exc_info=True)
-        pass
-    try:
-        s_water = dict_detailsTableOfOffer['Voda'][0]["value"]
-        dict_offerDetailsAttr['water'] = s_water
-    except KeyError:
-        logging.warning("s_water was not grabbed.", exc_info=True)
-        pass
-    try:
-        s_gas = dict_detailsTableOfOffer['Plyn'][0]["value"]
-        dict_offerDetailsAttr['gas'] = s_gas
-    except KeyError:
-        logging.warning("s_gas was not grabbed.", exc_info=True)
-        pass
-    try:
-        s_heating = dict_detailsTableOfOffer['Topení'][0]["value"]
-        dict_offerDetailsAttr['heating'] = s_heating
-    except KeyError:
-        logging.warning("s_heating was not grabbed.", exc_info=True)
-        pass
-    try:
-        s_waste = dict_detailsTableOfOffer['Odpad'][0]["value"]
-        dict_offerDetailsAttr['waste'] = s_waste
-    except KeyError:
-        logging.warning("s_waste was not grabbed.", exc_info=True)
-        pass
-    try:
-        s_electricity = dict_detailsTableOfOffer['Elektřina'][0]["value"]
-        dict_offerDetailsAttr['electricity'] = s_electricity
-    except KeyError:
-        logging.warning("s_electricity was not grabbed.", exc_info=True)
-        pass
-    try:
-        s_roads = dict_detailsTableOfOffer['Komunikace'][0]["value"]
-        dict_offerDetailsAttr['electricity'] = s_roads
-    except KeyError:
-        logging.warning("s_electricity was not grabbed.", exc_info=True)
-        pass
+    # Parsing specifically saved attribues
+    dict_specific_detailsAttr_binding = {
+        "transport": "Doprava",
+        "water": "Voda",
+        "gas": "Plyn",
+        "heating": "Topení",
+        "waste": "Odpad",
+        "electricity": "Elektřina",
+        "roads": "Komunikace"
+    }
+
+    for key, value in dict_specific_detailsAttr_binding.items():
+        try:
+            dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+        except KeyError:
+            logging.warning(key + " was not grabbed.", exc_info=True)
 
     # Parsing of distances from json object
     global dict_poi
     try:
         dist = data["poi"]
-        dict_poi = convertToKeyValue(dist, "name", "distance", True)
+        dict_poi = actions.convertToKeyValue(dist, "name", "distance", True)
     except KeyError:
         logging.info("Offer does not contains POI data.")
 
@@ -269,8 +167,7 @@ def extractData(data):
         "naturalAttractionDistance": "Přírodní zajímavost"
     }
 
-    # for each distance attribues add them to final dict
-
+    # for each distance attributes add them to final dict
     for key, value in dict_distance_binding.items():
         try:
             dict_offerDetailsAttr[key] = dict_poi[value]
@@ -280,7 +177,7 @@ def extractData(data):
             logging.info("Missing values in offer.", exc_info=True)
             continue
 
-    # replace None with 0
+    # replace None with NA to prevent skipping columns
     for key, value in dict_offerDetailsAttr.items():
         if value is None:
             dict_offerDetailsAttr[key] = "NA"
@@ -330,39 +227,3 @@ def extractData(data):
                                                      valueInputOption=value_input_option,
                                                      insertDataOption=insert_data_option, body=value_range_body)
     response = request.execute()
-
-    pprint(response)
-
-
-def getStringFromList(inp, field):
-    """
-      :param inp: list of all items
-      :param field: name of field where search
-      :return: string of values separated by comma
-      """
-    separator = ', '
-    global y
-    for i in inp[field]:
-        x = i["value"]
-        y = [x]
-    return separator.join(y)
-
-
-def convertToKeyValue(data, keyfield, valueField, roundDown):
-    """
-      :param keyfield: name of field to become key of dict
-      :param valueField: name of field to become value of dict
-      :param roundDown: if value is numeric, you can round down (True)
-      :param data: list with data to convert
-      :return: dict with key:value data
-      """
-    dict_result = {}
-    for i in data:
-        key = i[keyfield]
-        value = i[valueField]
-        dict_result[key] = value
-        if roundDown:
-            rvalue = math.floor(value)
-            dict_result[key] = rvalue
-
-    return dict_result
