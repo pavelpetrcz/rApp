@@ -1,13 +1,11 @@
 import actions
 
 
-def execute():
-    startingPointUrl = "https://www.sreality.cz/hledani/prodej/byty"
-
+def execute(url):
     # get list of offer at page and html of page
-    listOfOffers, html = actions.scrapeListOfOffers(startingPointUrl)
+    listOfOffers, html = actions.scrapeListOfOffers(url)
 
     # check if there is next page
-    nextPage = actions.checkNextPageOccurance(html)
+    nextPage, newUrl = actions.checkNextPageOccurance(html)
 
-    return listOfOffers, nextPage
+    return listOfOffers, nextPage, newUrl

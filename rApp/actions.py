@@ -109,7 +109,8 @@ def getHTML(url, sec):
 def checkNextPageOccurance(sourceCode):
     if sourceCode.findAll("a", {"class": "btn-paging-pn icof icon-arr-right paging-next"}):
         exists = True
+        newUrl = sourceCode.findAll("a", {"class": "btn-paging-pn icof icon-arr-right paging-next"})[0]["href"]
     else:
         exists = False
 
-    return exists
+    return exists, newUrl
