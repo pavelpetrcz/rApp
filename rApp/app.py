@@ -29,5 +29,3 @@ if __name__ == "__main__":
         # from each JSON extract data and save them
         for j in data:
             extractDataFromOfferFlow.execute(j)
-
-

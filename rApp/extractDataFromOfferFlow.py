@@ -22,7 +22,7 @@ from googleapiclient import discovery
 
 
 def execute(data):
-    # # dict pro všechny informace z nabídky
+    # list of all attributes
     list_offerDetailsAttr = ["internalId", "idOrder", "id", "offerName", "address", "offeredPrice", "priceNote",
                              "desc", "utilitiesCosts", "yearOfReconstruction",
                              "offerUpdatedDate", "floor", "ownership", "transferToPersonalOwnership", "location",
@@ -35,7 +35,7 @@ def execute(data):
                              "veterinaryDistance", "publicTransportDistance", "sportsGroundDistance", "tramDistance",
                              "trainDistance", "restaurantDistance", "metroDistance", "storeDistance", "schoolDistance",
                              "doctorDistance", "atmDistance", "preSchoolDistance", "schoolDistance", "pharmacyDistance",
-                             "trainDistance", "postOfficeDistance"]
+                             "trainDistance", "postOfficeDistance", "lat", "lon"]
     dict_offerDetailsAttr = dict.fromkeys(list_offerDetailsAttr)
 
     # # set as internal id
@@ -69,6 +69,12 @@ def execute(data):
     # Description
     s_desc = data["text"]["value"]
     dict_offerDetailsAttr["desc"] = s_desc
+
+    # GPS coordinates
+    s_lat = data["map"]["lat"]
+    dict_offerDetailsAttr["lat"] = s_lat
+    s_lon = data["map"]["lon"]
+    dict_offerDetailsAttr["lon"] = s_lon
 
     # Parsing additional data from table below description
     d = data["items"]
@@ -135,7 +141,7 @@ def execute(data):
             logging.warning(key + " was not grabbed.", exc_info=True)
 
     # Parsing of distances from json object
-    global dict_poi
+    dict_poi = {}
     try:
         dist = data["poi"]
         dict_poi = actions.convertToKeyValue(dist, "name", "distance", True)
@@ -226,4 +232,3 @@ def execute(data):
     request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_,
                                                      valueInputOption=value_input_option,
                                                      insertDataOption=insert_data_option, body=value_range_body)
-    response = request.execute()

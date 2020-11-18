@@ -72,7 +72,6 @@ def scrapeListOfOffers(url):
     listOfUrls = []
 
     while itemsPerPage > a:
-        href = "href"
         parseUrlOfOfferDetail = soupHtml.findAll("a", {"class": "title"})[a]["href"]
         detailUrl = baseUrl + parseUrlOfOfferDetail
         listOfUrls.append(detailUrl)
@@ -107,6 +106,7 @@ def getHTML(url, sec):
 
 
 def checkNextPageOccurance(sourceCode):
+    newUrl = ""
     if sourceCode.findAll("a", {"class": "btn-paging-pn icof icon-arr-right paging-next"}):
         exists = True
         newUrl = sourceCode.findAll("a", {"class": "btn-paging-pn icof icon-arr-right paging-next"})[0]["href"]
