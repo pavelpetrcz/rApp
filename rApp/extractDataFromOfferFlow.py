@@ -6,19 +6,19 @@ Created on Sat Oct 17 19:26:21 2020
 """
 from __future__ import print_function
 
-import actions
 import logging
-import os.path
+import os
 import pickle
 import uuid
-
 from datetime import date
 from datetime import timedelta
-
-from dateutil.parser import parse
 from google.auth.transport.requests import Request
+
+import googleapiclient.discovery
+from dateutil.parser import parse
 from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient import discovery
+
+import actions
 
 
 def execute(data):
@@ -189,14 +189,14 @@ def execute(data):
             dict_offerDetailsAttr[key] = "NA"
         else:
             continue
-    # print(dict_offerDetailsAttr)
+
     list_onlyValues = list(dict_offerDetailsAttr.values())
+
+    # If modifying these scopes, delete the file token.pickle.
+    scopes = ['https://www.googleapis.com/auth/spreadsheets']
 
     # oAuth 2.0 Google
     creds = None
-
-    # If modifying these scopes, delete the file token.pickle.
-    SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
@@ -207,14 +207,13 @@ def execute(data):
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                'C:\\Users\\pavel\\Disk Google\\finance\\nemovitosti\\nemovitostiSecretOauth.json', SCOPES)
+            flow = InstalledAppFlow.from_client_secrets_file('nemovitostiSecretOauth.json', scopes)
             creds = flow.run_local_server(port=8000)
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
 
-    service = discovery.build('sheets', 'v4', credentials=creds)
+    service = googleapiclient.discovery.build('sheets', 'v4', credentials=creds)
 
     # The ID of the spreadsheet to update.
     spreadsheet_id = '1YPWOsBVm2qGOWJx4dgniopZ_Ekm91h7hxy2-enof7N8'
@@ -233,5 +232,3 @@ def execute(data):
     request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_,
                                                      valueInputOption=value_input_option,
                                                      insertDataOption=insert_data_option, body=value_range_body)
-    response = request.execute()
-    # pprint(response)
