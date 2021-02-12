@@ -1,0 +1,1348 @@
+root - WARNING - terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - terrace was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'ID'
+root - WARNING - barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Bezbariérový'
+root - WARNING - parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Parkování'
+root - WARNING - garage was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Garáž'
+root - WARNING - transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Pøevod do OV'
+root - WARNING - yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Rok kolaudace'
+root - WARNING - gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Plyn'
+root - WARNING - roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Komunikace'
+root - WARNING - culturalHeritageDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kulturní památka'
+root - WARNING - tramDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Tram'
+root - WARNING - metroDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Metro'
+root - WARNING - naturalAttractionDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Pøírodní zajímavost'
+googleapiclient.discovery_cache - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+root - WARNING - terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - terrace was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - priceNote was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Poznámka k cenì'
+root - WARNING - location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Umístìní objektu'
+root - WARNING - lift was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Výtah'
+root - WARNING - id was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'ID zakázky'
+root - WARNING - energyPerformanceOfBuilding was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Energetická nároènost budovy'
+root - WARNING - barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Bezbariérový'
+root - WARNING - parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Parkování'
+root - WARNING - garage was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Garáž'
+root - WARNING - equipped was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Vybavení'
+root - WARNING - transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Pøevod do OV'
+root - WARNING - yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Rok kolaudace'
+root - WARNING - transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Doprava'
+root - WARNING - water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Voda'
+root - WARNING - gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Plyn'
+root - WARNING - heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Topení'
+root - WARNING - waste was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Odpad'
+root - WARNING - electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Elektøina'
+root - WARNING - roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Komunikace'
+root - WARNING - culturalHeritageDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kulturní památka'
+root - WARNING - tramDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Tram'
+root - WARNING - metroDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Metro'
+root - WARNING - naturalAttractionDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Pøírodní zajímavost'
+googleapiclient.discovery_cache - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+root - WARNING - terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - terrace was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'ID'
+root - WARNING - barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Bezbariérový'
+root - WARNING - parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Parkování'
+root - WARNING - garage was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Garáž'
+root - WARNING - transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Pøevod do OV'
+root - WARNING - yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Rok kolaudace'
+root - WARNING - gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Plyn'
+root - WARNING - roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Komunikace'
+root - WARNING - culturalHeritageDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kulturní památka'
+root - WARNING - tramDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Tram'
+root - WARNING - metroDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Metro'
+root - WARNING - cinemaDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kino'
+root - WARNING - theaterDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Divadlo'
+root - WARNING - storeDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Obchod'
+root - WARNING - naturalAttractionDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Pøírodní zajímavost'
+googleapiclient.discovery_cache - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+root - WARNING - terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - terrace was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - priceNote was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Poznámka k cenì'
+root - WARNING - idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'ID'
+root - WARNING - parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Parkování'
+root - WARNING - garage was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Garáž'
+root - WARNING - equipped was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Vybavení'
+root - WARNING - transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Pøevod do OV'
+root - WARNING - yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Rok kolaudace'
+root - WARNING - gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Plyn'
+root - WARNING - culturalHeritageDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kulturní památka'
+root - WARNING - tramDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Tram'
+root - WARNING - metroDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Metro'
+root - WARNING - naturalAttractionDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Pøírodní zajímavost'
+googleapiclient.discovery_cache - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+root - WARNING - priceNote was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Poznámka k cenì'
+root - WARNING - location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Umístìní objektu'
+root - WARNING - idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'ID'
+root - WARNING - parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Parkování'
+root - WARNING - garage was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Garáž'
+root - WARNING - transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Pøevod do OV'
+root - WARNING - gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Plyn'
+root - WARNING - electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Elektøina'
+root - WARNING - culturalHeritageDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kulturní památka'
+root - WARNING - tramDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Tram'
+root - WARNING - metroDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Metro'
+root - WARNING - naturalAttractionDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Pøírodní zajímavost'
+googleapiclient.discovery_cache - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+root - WARNING - terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - terrace was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - priceNote was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Poznámka k cenì'
+root - WARNING - idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'ID'
+root - WARNING - barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Bezbariérový'
+root - WARNING - parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Parkování'
+root - WARNING - garage was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Garáž'
+root - WARNING - yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Rok kolaudace'
+root - WARNING - culturalHeritageDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kulturní památka'
+root - WARNING - tramDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Tram'
+root - WARNING - metroDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Metro'
+root - WARNING - naturalAttractionDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Pøírodní zajímavost'
+googleapiclient.discovery_cache - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+root - WARNING - terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - terrace was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - cellarSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Sklep'
+root - WARNING - cellar was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Sklep'
+root - WARNING - priceNote was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Poznámka k cenì'
+root - WARNING - idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'ID'
+root - WARNING - barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Bezbariérový'
+root - WARNING - parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Parkování'
+root - WARNING - garage was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Garáž'
+root - WARNING - transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Pøevod do OV'
+root - WARNING - yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Rok kolaudace'
+root - WARNING - transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Doprava'
+root - WARNING - water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Voda'
+root - WARNING - gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Plyn'
+root - WARNING - electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Elektøina'
+root - WARNING - culturalHeritageDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kulturní památka'
+root - WARNING - tramDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Tram'
+root - WARNING - metroDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Metro'
+root - WARNING - theaterDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Divadlo'
+root - WARNING - naturalAttractionDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Pøírodní zajímavost'
+googleapiclient.discovery_cache - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+root - WARNING - terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - terrace was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - cellarSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Sklep'
+root - WARNING - cellar was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Sklep'
+root - WARNING - idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'ID'
+root - WARNING - barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Bezbariérový'
+root - WARNING - parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Parkování'
+root - WARNING - garage was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Garáž'
+root - WARNING - transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Pøevod do OV'
+root - WARNING - yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Rok kolaudace'
+root - WARNING - gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Plyn'
+root - WARNING - culturalHeritageDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kulturní památka'
+root - WARNING - tramDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Tram'
+root - WARNING - metroDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Metro'
+root - WARNING - naturalAttractionDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Pøírodní zajímavost'
+googleapiclient.discovery_cache - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+root - WARNING - terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - terrace was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - priceNote was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Poznámka k cenì'
+root - WARNING - lift was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Výtah'
+root - WARNING - id was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'ID zakázky'
+root - WARNING - energyPerformanceOfBuilding was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Energetická nároènost budovy'
+root - WARNING - barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Bezbariérový'
+root - WARNING - parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Parkování'
+root - WARNING - garage was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Garáž'
+root - WARNING - equipped was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Vybavení'
+root - WARNING - transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Pøevod do OV'
+root - WARNING - yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Rok kolaudace'
+root - WARNING - transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Doprava'
+root - WARNING - gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Plyn'
+root - WARNING - electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Elektøina'
+root - WARNING - culturalHeritageDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kulturní památka'
+root - WARNING - tramDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Tram'
+root - WARNING - metroDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Metro'
+root - WARNING - naturalAttractionDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Pøírodní zajímavost'
+googleapiclient.discovery_cache - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+root - WARNING - terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - terrace was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - cellarSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Sklep'
+root - WARNING - cellar was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Sklep'
+root - WARNING - priceNote was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Poznámka k cenì'
+root - WARNING - lift was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Výtah'
+root - WARNING - idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'ID'
+root - WARNING - barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Bezbariérový'
+root - WARNING - parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Parkování'
+root - WARNING - garage was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Garáž'
+root - WARNING - transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Pøevod do OV'
+root - WARNING - yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Rok kolaudace'
+root - WARNING - transport was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Doprava'
+root - WARNING - water was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Voda'
+root - WARNING - gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Plyn'
+root - WARNING - heating was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Topení'
+root - WARNING - electricity was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Elektøina'
+root - WARNING - roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Komunikace'
+root - WARNING - culturalHeritageDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kulturní památka'
+root - WARNING - tramDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Tram'
+root - WARNING - metroDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Metro'
+root - WARNING - cinemaDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kino'
+root - WARNING - theaterDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Divadlo'
+root - WARNING - storeDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Obchod'
+root - WARNING - naturalAttractionDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Pøírodní zajímavost'
+googleapiclient.discovery_cache - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+root - WARNING - terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - terrace was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'ID'
+root - WARNING - barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Bezbariérový'
+root - WARNING - garage was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Garáž'
+root - WARNING - transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Pøevod do OV'
+root - WARNING - yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Rok kolaudace'
+root - WARNING - gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Plyn'
+root - WARNING - roads was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Komunikace'
+root - WARNING - culturalHeritageDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kulturní památka'
+root - WARNING - tramDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Tram'
+root - WARNING - metroDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Metro'
+root - WARNING - theaterDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Divadlo'
+root - WARNING - naturalAttractionDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Pøírodní zajímavost'
+googleapiclient.discovery_cache - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+root - WARNING - terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - terrace was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'ID'
+root - WARNING - barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Bezbariérový'
+root - WARNING - garage was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Garáž'
+root - WARNING - equipped was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Vybavení'
+root - WARNING - transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Pøevod do OV'
+root - WARNING - yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Rok kolaudace'
+root - WARNING - culturalHeritageDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kulturní památka'
+root - WARNING - tramDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Tram'
+root - WARNING - metroDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Metro'
+root - WARNING - naturalAttractionDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Pøírodní zajímavost'
+googleapiclient.discovery_cache - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+root - WARNING - terraceSqMeter was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - terrace was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Terasa'
+root - WARNING - priceNote was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Poznámka k cenì'
+root - WARNING - location was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Umístìní objektu'
+root - WARNING - idOrder was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'ID'
+root - WARNING - barrieFree was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Bezbariérový'
+root - WARNING - parking was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Parkování'
+root - WARNING - garage was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Garáž'
+root - WARNING - transferToPersonalOwnership was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Pøevod do OV'
+root - WARNING - yearOfApproval was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 123, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value]
+KeyError: 'Rok kolaudace'
+root - WARNING - gas was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 140, in execute
+    dict_offerDetailsAttr[key] = dict_detailsTableOfOffer[value][0]["value"]
+KeyError: 'Plyn'
+root - WARNING - culturalHeritageDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Kulturní památka'
+root - WARNING - tramDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Tram'
+root - WARNING - metroDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Metro'
+root - WARNING - theaterDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Divadlo'
+root - WARNING - veterinaryDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Veterináø'
+root - WARNING - naturalAttractionDistance was not grabbed.
+Traceback (most recent call last):
+  File "C:\Osobni\rApp\rApp\extractDataFromOfferFlow.py", line 180, in execute
+    dict_offerDetailsAttr[key] = dict_poi[value]
+KeyError: 'Pøírodní zajímavost'
+googleapiclient.discovery_cache - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\pavel\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth

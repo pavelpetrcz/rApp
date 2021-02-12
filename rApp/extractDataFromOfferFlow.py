@@ -189,7 +189,7 @@ def execute(data):
             dict_offerDetailsAttr[key] = "NA"
         else:
             continue
-    print(dict_offerDetailsAttr)
+    # print(dict_offerDetailsAttr)
     list_onlyValues = list(dict_offerDetailsAttr.values())
 
     # oAuth 2.0 Google
@@ -201,6 +201,7 @@ def execute(data):
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
+
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
@@ -232,3 +233,5 @@ def execute(data):
     request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_,
                                                      valueInputOption=value_input_option,
                                                      insertDataOption=insert_data_option, body=value_range_body)
+    response = request.execute()
+    # pprint(response)
