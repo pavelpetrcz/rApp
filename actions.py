@@ -88,8 +88,10 @@ def getHTML(url, sec):
     :param sec: number of sec to wait between requests (i.e. 1)
     :return: HTML of page
     """
-    # open chrome
-    browser = webdriver.Chrome()
+    # inicialize browser
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.set_capability("browserVersion", "92")
+    browser = webdriver.Chrome(executable_path="./drivers/chromedriver",options=chrome_options)
 
     # open URL
     browser.get(url)
