@@ -91,7 +91,7 @@ def getHTML(url, sec):
     # inicialize browser
     chrome_options = webdriver.ChromeOptions()
     chrome_options.set_capability("browserVersion", "92")
-    browser = webdriver.Chrome(executable_path="pavel@pavel:/lib/chromium-browser/chromedriver", options=chrome_options)
+    browser = webdriver.Chrome(executable_path="$HOME/pavel/lib/chromium-browser/chromedriver", options=chrome_options)
 
     # open URL
     browser.get(url)
