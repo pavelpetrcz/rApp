@@ -2,7 +2,6 @@ import math
 import requests
 import time
 
-
 from selenium import webdriver
 from bs4 import BeautifulSoup
 
@@ -73,7 +72,8 @@ def scrapeListOfOffers(url):
     listOfUrls = []
 
     while itemsPerPage > a:
-        parseUrlOfOfferDetail = soupHtml.findAll("a", {"class": "title"})[a]["href"]
+        href = "href"
+        parseUrlOfOfferDetail = soupHtml.findAll("a", {"class": "title"})[a][href]
         detailUrl = baseUrl + parseUrlOfOfferDetail
         listOfUrls.append(detailUrl)
         a = a + 1
@@ -91,7 +91,7 @@ def getHTML(url, sec):
     # inicialize browser
     chrome_options = webdriver.ChromeOptions()
     chrome_options.set_capability("browserVersion", "92")
-    browser = webdriver.Chrome(executable_path="./drivers/chromedriver",options=chrome_options)
+    browser = webdriver.Chrome(executable_path=":/lib/chromium-browser/chromedriver", options=chrome_options)
 
     # open URL
     browser.get(url)
