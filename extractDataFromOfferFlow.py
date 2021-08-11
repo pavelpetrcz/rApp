@@ -229,6 +229,10 @@ def execute(data):
 
     value_range_body = {"values": [list_onlyValues], "range": "A1:BL2"}
 
-    request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_,
-                                                     valueInputOption=value_input_option,
-                                                     insertDataOption=insert_data_option, body=value_range_body)
+    request = service.spreadsheets().values().append(
+        spreadsheetId=spreadsheet_id,
+        range=range_,
+        valueInputOption=value_input_option,
+        insertDataOption=insert_data_option,
+        body=value_range_body
+        )

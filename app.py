@@ -15,7 +15,11 @@ if __name__ == "__main__":
     url = "https://www.sreality.cz/hledani/prodej/byty/jihocesky-kraj?stari=dnes"
     again = True
     # logging setup
-    logging.basicConfig(filename='app.log', filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    logging.basicConfig(
+        filename='app.log',
+        filemode='w',
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
 
     # get URL of offers at page
     while again:
