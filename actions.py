@@ -1,4 +1,6 @@
 import math
+import os
+
 import requests
 import time
 
@@ -90,8 +92,9 @@ def getHTML(url, sec):
     """
     # inicialize browser
     chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--headless")
     chrome_options.set_capability("browserVersion", "85.0")
-    browser = webdriver.Chrome(options=chrome_options, executable_path="/usr/bin/chromedriver")
+    browser = webdriver.Chrome(options=chrome_options, executable_path=os.path.abspath("/usr/lib/chromedriver"))
 
     # open URL
     browser.get(url)
