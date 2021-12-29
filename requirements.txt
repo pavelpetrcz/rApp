@@ -3,3 +3,4 @@ selenium~=3.141.0
 beautifulsoup4~=4.9.3
 actions~=1.0.3
 python-dateutil~=2.8.1
+pymongo>=4.0.1
