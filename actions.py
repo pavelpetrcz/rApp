@@ -1,122 +1,70 @@
-import math
-import os
-
-import requests
+#  Copyright (c) Pavel Petr 2021.
+import logging
 import time
 
-from selenium import webdriver
-from bs4 import BeautifulSoup
+from pymongo import MongoClient
+
+import requests as re
+import json
 
 
-def convertToKeyValue(data, keyfield, valueField, roundDown):
+def getDbConn(connection_string):
     """
-      :param keyfield: name of field to become key of dict
-      :param valueField: name of field to become value of dict
-      :param roundDown: if value is numeric, you can round down (True)
-      :param data: list with data to convert
-      :return: dict with key:value data
-      """
-    dict_result = {}
-    for i in data:
-        key = i[keyfield]
-        value = i[valueField]
-        dict_result[key] = value
-        if roundDown:
-            rvalue = math.floor(value)
-            dict_result[key] = rvalue
-
-    return dict_result
-
-
-def getOfferJson(partOfUrl):
+    create connection to MongoDB
+    :param connection_string: insert specified URI to MongoDB database location
+    :return: client - object at which you can choose collection from "estates" database
     """
-    :param partOfUrl: id of offer parsed from HTML
-    :return: complet JSON of offer
+    # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
+    client = MongoClient(connection_string)
+    # Create the database for our example (we will use the same database throughout the tutorial
+    return client['estates']
+
+
+def scrapeContent(collection_name):
     """
-    url = "https://www.sreality.cz/api/cs/v2/estates/"
-
-    final_url = url + partOfUrl
-    time.sleep(1)
-    response = requests.get(final_url)
-    result = response.json()
-    return result
-
-
-def scrapeListOfOffers(url):
+    Method extract list of 100 lastly added estates an save each of them to DB
+    :param collection_name: insert object from mongo client with specified collection where to store data
     """
-    :param: url where to scrape urls of offers
-    :return: list of offer URLs at page
-    """
+    try:
+        # get list of estates
+        estates_list = re.get(
+            'http://sreality.cz/api/cs/v2/estates?category_main_cb=1&category_type_cb=1&locality_region_id=1&per_page=10&tms=1640380327573')
+        estates_list = json.loads(estates_list.text)
+        estates = estates_list['_embedded']['estates']
 
-    # base Url
-    baseUrl = "https://www.sreality.cz"
+        estateIds = []
+        for estate in estates:
+            estateIds.append(estate['hash_id'])
 
-    scrapeAgain = True
-    scrapeSleep = 2
-    itemsPerPage = 0
-    soupHtml = ""
+        # get detail of estate and save
+        for estateId in estateIds:
+            url = "https://www.sreality.cz/api/cs/v2/estates/{}?tms=1640382199242".format(estateId)
+            estate_detail_offer = re.get(url)
+            dict_estate_detail_offer = json.loads(estate_detail_offer.text)
 
-    while scrapeAgain:
-        soupHtml = getHTML(url, scrapeSleep)
+            # delete unwated objects from json
+            objects_to_delete = ['meta_description',
+                                 '_embedded',
+                                 'logged_in',
+                                 'is_topped',
+                                 '_links',
+                                 'panorama',
+                                 'seo',
+                                 'rus',
+                                 'is_topped_today',
+                                 'locality_district_id',
+                                 'codeItems'
+                                 ]
 
-        # count of item in scraped page
-        itemsPerPage = len(soupHtml.findAll("a", {"class": "title"}))
+            for obj in objects_to_delete:
+                del dict_estate_detail_offer[obj]
+            del dict_estate_detail_offer['map']['geometry']
 
-        # if scraping was not successful do it again slower
-        if itemsPerPage == 0:
-            scrapeAgain = True
-            scrapeSleep += 1
-        else:
-            scrapeAgain = False
+            # save to DB
+            collection_name.insert_one(dict_estate_detail_offer)
 
-    # parsed URLs of all offer at page
-    a = 0
-    listOfUrls = []
+            # wait a while to scrape next
+            time.sleep(10)
 
-    while itemsPerPage > a:
-        href = "href"
-        parseUrlOfOfferDetail = soupHtml.findAll("a", {"class": "title"})[a][href]
-        detailUrl = baseUrl + parseUrlOfOfferDetail
-        listOfUrls.append(detailUrl)
-        a = a + 1
-
-    # concatate url for next scrape
-    return listOfUrls, soupHtml
-
-
-def getHTML(url, sec):
-    """
-    :param url: address of page to scrape
-    :param sec: number of sec to wait between requests (i.e. 1)
-    :return: HTML of page
-    """
-    # inicialize browser
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--headless")
-    chrome_options.set_capability("browserVersion", "85.0")
-    browser = webdriver.Chrome(options=chrome_options, executable_path=os.path.abspath("/usr/lib/chromedriver"))
-
-    # open URL
-    browser.get(url)
-    time.sleep(sec)
-
-    # download page in HTML
-    html = browser.page_source
-
-    # close chrome
-    browser.close()
-
-    # parse html with BS
-    soupHtml = BeautifulSoup(html, "html.parser")
-    return soupHtml
-
-
-def checkNextPageOccurance(sourceCode):
-    newUrl = ""
-    if sourceCode.findAll("a", {"class": "btn-paging-pn icof icon-arr-right paging-next"}):
-        exists = True
-        newUrl = sourceCode.findAll("a", {"class": "btn-paging-pn icof icon-arr-right paging-next"})[0]["href"]
-    else:
-        exists = False
-
-    return exists, newUrl
+    except Exception as exce:
+        logging.warning(exce, stack_info=True, exc_info=True)

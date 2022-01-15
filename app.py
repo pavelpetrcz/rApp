@@ -1,19 +1,18 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Oct 17 19:32:08 2020
+#  Copyright (c) Pavel Petr 2021.
 
-@author: pavel
-"""
 
-import extractDataFromOfferFlow
-import extractOffersFromPageFlow
-import extractOffersUrlsAndCheckNextPageFlow
+import time
 import logging
+import os
+import schedule
+
+import actions
 
 if __name__ == "__main__":
-    baseUrl = "https://www.sreality.cz"
-    url = "https://www.sreality.cz/hledani/prodej/byty/jihocesky-kraj?stari=dnes"
+    # constants
     again = True
+    collection_name = ""
+
     # logging setup
     logging.basicConfig(
         filename='app.log',
@@ -21,15 +20,22 @@ if __name__ == "__main__":
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
 
-    # get URL of offers at page
+    # establish db connection
+    try:
+        conn_string = 'mongodb+srv://ppetr:{}@clusterppe.hga2z.mongodb.net/estates?retryWrites=true&w=majority'.format(
+            os.environ['db_pass'])
+        clientDb = actions.getDbConn(connection_string=conn_string)
+        collection_name = clientDb["flats"]
+    except Exception as e:
+        logging.error(e, stack_info=True, exc_info=True)
+
+    # scrape content every 24 hours
+    try:
+        schedule.every(24).hours.do(actions.scrapeContent, collection_name=collection_name)
+    except Exception as exc:
+        logging.warning(exc, stack_info=True, exc_info=True)
+
+    # run schedule
     while again:
-        l, ex, newUrl = extractOffersUrlsAndCheckNextPageFlow.execute(url)
-        again = ex
-        url = baseUrl + newUrl
-
-        # get JSON of offers at page
-        data = extractOffersFromPageFlow.execute(l)
-
-        # from each JSON extract data and save them
-        for j in data:
-            extractDataFromOfferFlow.execute(j)
+        schedule.run_pending()
+        time.sleep(1)
